@@ -1,0 +1,400 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+    font-family: 'Gilmer';
+    src: url('./Gilmer-Font/Gilmer\ Bold.otf');
+    font-weight: 700;
+}
+*
+{
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+body
+{
+    margin: 0;
+    padding: 0;
+}
+ul,li
+{
+    list-style: none;
+}
+a
+{
+    text-decoration: none;
+}
+img
+{
+    width: 100%;
+}
+.hero-section
+{
+    position: relative;
+    background: url('./images/hero-section.png');
+    background-position: 0px -150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 266px 0 295px;
+    z-index: 1;
+}
+.hero-title
+{
+    font-size: 60px;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 21px;
+    max-width: 566px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.search-card
+{
+    padding: 16px 24px;
+    background: #FFFFFF73;
+    border-radius: 12px;
+}
+.search-by-map
+{
+    width: 100%;
+    padding: 8px 24px;
+    border-radius: 50px;
+    background: #465E38;
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+}
+.search-by-map:focus
+{
+    box-shadow: none;
+}
+.search-field
+{
+    padding: 9px 45px 9px 24px;
+    background: #fff;
+    border-radius: 50px;
+    border: none;
+    min-height: 1px;
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+}
+.search-field::placeholder
+{
+    color: #afafaf;
+}
+.search-field:focus
+{
+    box-shadow: none;
+}
+.search-btn
+{
+    position: relative;
+    width: 60px;
+    height: 60px;
+    flex: none;
+    border: 5px solid #fff;
+    background: #465E38;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    z-index: 2;
+    margin-left: -30px;
+}
+.search-btn img
+{
+    width: 20px;
+}
+.search-btn:hover
+{
+    background: #465E38;
+    border: 5px solid #fff;
+}
+.search-btn:focus
+{
+    background: #465E38;
+    border: 5px solid #fff;
+}
+.browser-section
+{
+    padding: 36px 15px;
+}
+.section-head
+{
+    font-size: 32px;
+    font-weight: 600;
+    text-align: center;
+    color: #000;
+    margin-bottom: 18px;
+}
+.browser-card
+{
+    padding: 14px 14px 20px;
+    border: 1px solid #C7C7C7;
+    background: #fff;
+    border-radius: 28px;
+    transition: .4s ease;
+}
+.browser-card:hover
+{
+    background: #FFFAE9;
+}
+.browser-img
+{
+    border-radius: 20px;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    filter: grayscale(1);
+    transition: .4s ease;
+}
+.browser-card:hover .browser-img
+{
+    filter: grayscale(0);
+}
+.browsercard-title
+{
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 27px;
+    text-align: center;
+}
+.feature-section
+{
+    padding-bottom: 72px;
+}
+.feature-card
+{
+    border: 1px solid #c7c7c7;
+    border-radius: 28px;
+}
+.feature-img
+{
+    height: 300px;
+    border-radius: 18px;
+}
+.acres-length
+{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: #FFFFFFE5;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000;
+    font-weight: 400;
+}
+.feature-title
+{
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #000;
+}
+.feature-text
+{
+    font-size: 16px;
+    color: #00000099;
+    margin-bottom: 0px;
+}
+.userfeature-title
+{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #000;
+}
+.userfeature-text
+{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    color: #00000099;
+    margin-bottom: 0px;
+}
+.common-btn
+{
+    border-radius: 50px;
+    background: #465E38;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 400;
+}
+.user-feature
+{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.why-section
+{
+    background: #465E38;
+    padding: 50px 0px 69px;
+}
+.why-text
+{
+    max-width: 504px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 400;
+    color: #FFFFFFB2;
+    text-align: center;
+}
+.why-card
+{
+    border-radius: 18px;
+    border: 1px solid #FFFFFF69;
+}
+.why-card-title
+{
+    font-size: 30px;
+    color: #fff;
+    line-height: 45px;
+    font-weight: 600;
+}
+.why-card-text
+{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #FFFFFFB2;
+}
+.white-btn
+{
+    color: #141414;
+}
+.list-section
+{
+    padding: 60px 0px 80px;
+    background: url('./images/listing-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Footer */
+.footer
+{
+    padding: 45px 0px 0px;
+    background: #1D1D1D;
+}
+.inner-footer
+{
+    padding-bottom: 45px;
+}
+.footer-title
+{
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+    font-weight: 600;
+}
+.newsletter-card
+{
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.footer-link-container
+{
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 15px;
+}
+.footer-list-head
+{
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+}
+.footer-item
+{
+    margin-bottom: 8px;
+}
+.footer-list .footer-item:last-child
+{
+    margin-bottom: 0px;
+}
+.footer-link
+{
+    color: #FFFFFFB2;
+    font-size: 16px;
+    font-weight: 400;
+}
+.social-list
+{
+    padding-left: 0px;
+    gap: 10px;
+}
+.social-media
+{
+    background: #0F0F0F;
+    padding: 13px 10px;
+}
+
+
+
+/* Media Query */
+@media only screen and (max-width: 991px)
+{
+    .hero-section
+    {
+        background-position: 0px 0px;
+        padding: 90px 0 186px;
+    }
+    .hero-title
+    {
+        font-size: 40px;
+    }
+    .search-by-map
+    {
+        font-size: 13px;
+        padding: 9px 22px;
+    }
+    .search-field
+    {
+        font-size: 13px;
+    }
+    .section-head
+    {
+        font-size: 26px;
+    }
+    .browser-img
+    {
+        height: 161px;
+    }
+    .browsercard-title
+    {
+        font-size: 18px;
+    }
+    .feature-img
+    {
+        height: 208px;
+    }
+    .feature-text
+    {
+        font-size: 13px;
+    }
+    .userfeature-title
+    {
+        font-size: 13px;
+    }
+    .userfeature-text
+    {
+        font-size: 13px;
+    }
+    .common-btn
+    {
+        font-size: 13px;
+    }
+    .why-text
+    {
+        font-size: 13px;
+    }
+}
+/* Media Query End */
