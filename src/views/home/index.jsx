@@ -9,8 +9,8 @@ import HeroSection from "../../components/home/heroSection/HeroSection";
 import Agent from "../../components/findAgent/Agent";
 import FindAgent from "../findAgent";
 import HomeProvider from "../../context/HomeProvider";
+import PaginationComponent from "../../components/common/pagination/PaginationComponent";
 const Home = () => {
-  
   return (
     <>
     <HomeProvider>
@@ -18,6 +18,7 @@ const Home = () => {
       <FindAgent/>
       <BrowseByType />
       <Features />
+      <PaginationComponent/>
       <ListWithUs />
       <Footer />
     </HomeProvider>

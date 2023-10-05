@@ -1,13 +1,13 @@
 import React, { createContext, useContext, useState } from "react";
-
-const HomePageContext = createContext();
+let valueData=""
+const HomePageContext = createContext(valueData);
 
 export const homePageData = () => {
   return useContext(HomePageContext);
 };
 
 const HomeProvider = ({ children }) => {
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState([]);
   const handleSearchValue = (value) => {
     setSearchValue(value);
   };
@@ -17,6 +17,7 @@ const HomeProvider = ({ children }) => {
         value={{
           handleSearchValue,
           searchValue,
+          valueData
         }}
       >
         {children}
