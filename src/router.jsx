@@ -1,7 +1,10 @@
 import { lazy } from "react";
+
 // Import your route components using lazy loading
 const Home = lazy(() => import("./views/home"));
-const Login =lazy(()=>import("./views/login"))
+const AgentSignIn =lazy(()=>import(""))
+const FindAgent =lazy(()=>import("./views/findAgent"))
+const Result =lazy(()=>import("./views/resultPage"))
 
 export const route = [
   {
@@ -10,8 +13,19 @@ export const route = [
     private: true,
   },
   {
-    path: "/login",
-    element: <Login />,
+    path: "/find-agent",
+    element: <FindAgent/>,
+    private: true,
+  },
+
+  {
+    path: "/sign-In",
+    element: <AgentSignIn />,
+    private: false,
+  },
+  {
+    path: "/result",
+    element: <Result/>,
     private: false,
   },
 ];
