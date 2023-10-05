@@ -26,6 +26,14 @@ img
 {
     width: 100%;
 }
+.bg-grey
+{
+    background: #F0F0F0 !important;
+}
+.mb-21
+{
+    margin-bottom: 21px;
+}
 .hero-section
 {
     position: relative;
@@ -275,6 +283,48 @@ img
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+}
+.filter-btn
+{
+    padding: 10px 15px;
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+    border: 1px solid #C7C7C7;
+    font-size: 13px;
+    color: #000;
+    background: transparent;
+}
+.filter-btn img
+{
+    margin: 0 auto 7px;
+    width: 18px;
+}
+.small-search-btn
+{
+    width: 46px;
+    height: 46px;
+}
+.small-search-btn img {
+    width: 16px;
+}
+.text-body
+{
+    font-size: 16px;
+    margin-bottom: 0px;
+    color: #000;
+}
+.sort-select
+{
+    max-width: 100px;
+    border: 1px solid #C7C7C7;
+    border-radius: 50px;
+    padding-right: 19px;
+    text-align: center;
+}
+.sort-select option
+{
+    text-align: left;
 }
 
 /* Footer */
