@@ -1,6 +1,6 @@
 import React from 'react'
 import { Container, Row, Col, Form, Pagination } from 'react-bootstrap';
-import searchIcon from '../../assets/images/search-icon.svg';
+import closeIcon from '../../assets/images/cancel.svg';
 import filterIcon from '../../assets/images/filter.svg';
 import '../../assets/style.css';
 import Agent from '../../components/findAgent/Agent';
@@ -34,6 +34,12 @@ const FindAgent = () => {
           <Agent/>
         </Container>
       </section>
+      <div className='filter-drawer'>
+          <div className='d-flex justify-content-between align-items-center py-3 px-4'>
+              <h3 className='feature-title mb-0 fw-semibold'>Filter</h3>
+              <button className='close-btn'><img src={closeIcon} /></button>
+          </div>
+      </div>
       <div>
         <Pagination className='justify-content-center mt-4 align-items-center'>
           <Pagination.Prev className='pagination-arrow me-3' />
