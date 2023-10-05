@@ -326,6 +326,62 @@ img
 {
     text-align: left;
 }
+.pagination-arrow a
+{
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #1D1D1D;
+    background: #1D1D1D;
+    color: #fff;
+    font-size: 20px;
+}
+.pagination-arrow:first-child .page-link,
+.pagination-arrow:last-child .page-link
+{
+    border-radius: 50%;
+}
+.pagination-arrow.next-arrow .page-link
+{
+    background: transparent;
+    color: #1D1D1D;
+}
+.pages-link
+{
+    padding: 6px 7px;
+    border-radius: 50px;
+    border: 1px solid #C7C7C7;
+}
+.pages-link .page-link
+{
+    min-width: 23px;
+    height: 23px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 400;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+}
+.pages-link .page-link:focus
+{
+    box-shadow: none;
+}
+.pages-link .page-item.active .page-link
+{
+    background: #465E38;
+    color: #fff;
+}
+.pages-link .page-item:first-child .page-link,
+.pages-link .page-item:last-child .page-link
+{
+    border-radius: 30px;
+}
 
 /* Footer */
 .footer
