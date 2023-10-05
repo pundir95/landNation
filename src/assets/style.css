@@ -34,6 +34,49 @@ img
 {
     margin-bottom: 21px;
 }
+.fw-semibold
+{
+    font-weight: 600 !important;
+}
+.color-828282
+{
+    color: #828282 !important;
+}
+/* bg color start */
+.bg-lightblk {
+    background-color: #323232 !important;
+}
+/* bg color end */
+/* spacing start */
+.mb-39 {
+    margin-bottom: 39px;
+}
+.p43-24 {
+    padding: 43px 24px !important
+}
+.list-hero-sapce {
+    padding: 150px 0 295px !important;
+}
+.mb-59 {
+    margin-bottom: 59px;
+}
+.mt-45 {
+    margin-top: 45px;
+    
+}
+/* sapcing end */
+/* font size start */
+.font38 {
+font-size: 38px !important;
+}
+.font-24 {
+font-size: 24px !important;
+font-weight: 600 !important;
+}
+.font-22 {
+    font-size: 22px !important;
+    }
+/* font size end */
 .hero-section
 {
     position: relative;
@@ -308,12 +351,6 @@ img
 .small-search-btn img {
     width: 16px;
 }
-.text-body
-{
-    font-size: 16px;
-    margin-bottom: 0px;
-    color: #000;
-}
 .sort-select
 {
     max-width: 100px;
@@ -382,6 +419,133 @@ img
 {
     border-radius: 30px;
 }
+.close-btn
+{
+    width: 21px;
+    height: 21px;
+    border-radius: 5px;
+    border: 1px solid #FF9D9D;
+    background: #FFC8C8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.close-btn img
+{
+    width: 9px;
+}
+
+
+.available-btn {
+    border-radius: 50px;
+    border: 1px solid #465E38;
+    background: transparent;
+    color: #465E38;
+    font-family: Poppins;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 3px 18px;
+}
+.text-body {
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+}
+.Refuge-title {
+    color: #465E38;
+    font-size: 32px;
+    font-weight: 400;
+}
+.text-overlay {
+    content: "";
+    position: absolute;
+    width: 100%;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 12px;
+    background: linear-gradient(0deg, #FFF 0%, rgba(255, 255, 255, 0.00) 100%);
+}
+.z-index99 {
+    z-index: 99999 !important;
+    position: relative !important;
+}
+.common-sub-heading {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+}
+.user-feature-img {
+    width: 79px;
+    height: 79px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.seller-input {
+    width: 100%;
+    padding: 8px 18px 8px 20px;
+    border-radius: 50px !important;
+    background: #F6F6F6 !important;
+    font-size: 16px;
+
+}
+.seller-text-area {
+    height: 113px;
+    padding: 8px 18px 8px 20px;
+    border-radius: 15px !important;
+    background: #F6F6F6 !important;
+}
+.border-r14 {
+    border-radius: 14px;
+}
+
+
+.agent-card-img {
+    width: 135px;
+    height: 135px;
+    border-radius: 18px;
+}
+.user-feature-profile {
+    width: 156px;
+height: 156px;
+border-radius: 500px;
+}
+.d-inlineblock {
+    display: inline-block;
+}
+.about-title {
+    color: #000000;
+    font-size: 32px;
+    font-weight: 600;
+}
+.bg-lightblk {
+    background-color: #323232 !important;
+}
+.landwatch-cards-icon {
+    width: 48px;
+    height: 48px;
+}
+.landwatch-cards-iconbg {
+    height: 64px;
+    width: 70px;
+    background: #FFFAE9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+.question-call {
+max-width: 457px;
+width: 100%;
+border-radius: 17px;
+border: 1px solid #C6C6C6;
+background: #FFFAE9;
+padding: 28px 43px;
+}
+
+
 
 /* Footer */
 .footer
@@ -502,5 +666,26 @@ img
     {
         font-size: 13px;
     }
+    .Refuge-title {
+        font-size: 22px;
+    }
+    .text-body
+    {
+        font-size: 13px;
+    }
+    .seller-input
+    {
+        font-size: 13px;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .section-head {
+        font-size: 20px;
+    }
+    .font-24 {
+        font-size: 15px !important;
+    }
+
 }
 /* Media Query End */
