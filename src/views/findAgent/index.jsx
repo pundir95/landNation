@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Pagination } from 'react-bootstrap';
 import searchIcon from '../../assets/images/search-icon.svg';
 import filterIcon from '../../assets/images/filter.svg';
 import '../../assets/style.css';
@@ -49,12 +49,26 @@ const FindAgent = () => {
             <div className='px-2'>
               <h3 className='section-head text-start'>Arkansas Land Information</h3>
               <p className='text-body mb-3'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-              <p className='mb-0'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
-  Read More about Arkansas land</p>
+              <p className='mb-0'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Read More about Arkansas land</p>
             </div>
           </div>
         </Container>
       </section>
+      <div>
+        <Pagination className='justify-content-center mt-4 align-items-center'>
+          <Pagination.Prev className='pagination-arrow me-3' />
+          <div className='pages-link d-flex'>
+            <Pagination.Item active>{1}</Pagination.Item>
+            <Pagination.Item>{2}</Pagination.Item>
+            <Pagination.Item>{3}</Pagination.Item>
+            <Pagination.Item>{4}</Pagination.Item>
+            <Pagination.Item>{5}</Pagination.Item>
+            <Pagination.Ellipsis />
+            <Pagination.Item active>{20}</Pagination.Item>
+          </div>
+          <Pagination.Next className='pagination-arrow next-arrow ms-3' />
+        </Pagination>
+      </div>
     </>
   )
 }
