@@ -2,7 +2,7 @@ import React from "react";
 
 const Agent = () => {
   return (
-    <div className="feature-card p-3">
+    <div className="feature-card p-3 mb-4">
       <div className="px-2">
         <h3 className="section-head text-start">Arkansas Land Information</h3>
         <p className="text-body mb-3">

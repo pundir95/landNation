@@ -29,12 +29,13 @@ const Search = () => {
         </Col>
         <Col lg={10} md={9}>
           <div className="">
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center w-100">
               <Select
                 closeMenuOnSelect={false}
                 components={animatedComponents}
                 isMulti
                 options={selectOptions}
+                className="search-field w-100"
                 placeholder="Enter a State, Country or City"
                 styles={{
                   control: (provided, state) => ({
