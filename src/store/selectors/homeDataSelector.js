@@ -1,0 +1,1 @@
+export const selectPropertyListData = (state) => state.homeData.propertyList;
