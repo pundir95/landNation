@@ -1,9 +1,11 @@
 import React from "react";
 import { Col } from "react-bootstrap";
+import { homePageData } from "../../../context/HomeProvider";
 
 const FeatureCard = ({item}) => {
+  const {handleSelectedPropertyCard}=homePageData()
   return (
-    <Col md={6} className="mb-3">
+    <Col md={6} className="mb-3" onClick={()=>handleSelectedPropertyCard(item.id)}>
       <div className="feature-card p-3">
         <div className="feature-imgbx position-relative mb-3">
           <img src={item.image} className="feature-img" />

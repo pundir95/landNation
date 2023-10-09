@@ -1,10 +1,10 @@
 import React from "react";
 import { Container, Row, Col, Form, Pagination } from "react-bootstrap";
-import searchIcon from "../../assets/images/search-icon.svg";
-import filterIcon from "../../assets/images/filter.svg";
 import "../../assets/style.css";
 import Agent from "../../components/findAgent/Agent";
 import { homePageData } from "../../context/HomeProvider";
+import closeIcon from '../../assets/images/cancel.svg';
+import filterIcon from '../../assets/images/filter.svg';
 
 const FindAgent = () => {
   const { searchValue } = homePageData();
