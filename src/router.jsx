@@ -3,12 +3,15 @@ import { lazy } from "react";
 // Import your route components using lazy loading
 const Home = lazy(() => import("./views/home"));
 const AgentSignIn =lazy(()=>import(""))
-const FindAgent =lazy(()=>import("./views/findAgent"))
+const FindAgent =lazy(()=>import("./views/findAgent/findAgent"))
 const Result =lazy(()=>import("./views/resultPage"))
-const SingleProperty =lazy(()=>import("./views/singleProperty"))
-const ListPoperty =lazy(()=>import("./views/listProperty"))
-const RealEstate =lazy(()=>import("./views/realEstate"))
-const AgentProperty =lazy(()=>import("./views/agentProperty"))
+const SingleProperty =lazy(()=>import("./views/singleProperty/singleProperty"))
+const ListPoperty =lazy(()=>import("./views/listProperty/listProperty"))
+const RealEstate =lazy(()=>import("./views/realEstate/realEstate"))
+const AgentProperty =lazy(()=>import("./views/agentProperty/agentProperty"))
+const PriceList =lazy(()=>import("./views/priceList/priceList"))
+const AccountInfo =lazy(()=>import("./views/accountInfo/accountInfo"))
+const BillingInfo =lazy(()=>import("./views/billingInfo/billingInfo"))
 
 export const route = [
   {
@@ -48,6 +51,24 @@ export const route = [
   {
     path: "/agent-listing",
     element: <AgentProperty/>,
+    private: true,
+  },
+
+  {
+    path: "/price-list",
+    element: <PriceList/>,
+    private: true,
+  },
+  
+  {
+    path: "/account-info",
+    element: <AccountInfo/>,
+    private: true,
+  },
+  
+  {
+    path: "/billing-info",
+    element: <BillingInfo/>,
     private: true,
   },
 

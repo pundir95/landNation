@@ -7,7 +7,7 @@ import ListWithUs from "../../components/home/listWithUs/ListWithUs";
 import Search from "../../components/common/search/Search";
 import HeroSection from "../../components/home/heroSection/HeroSection";
 import Agent from "../../components/findAgent/Agent";
-import FindAgent from "../findAgent";
+import FindAgent from "../findAgent/findAgent";
 import HomeProvider from "../../context/HomeProvider";
 import PaginationComponent from "../../components/common/pagination/PaginationComponent";
 const Home = () => {
