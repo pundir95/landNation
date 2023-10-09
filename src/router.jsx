@@ -12,6 +12,7 @@ const AgentProperty =lazy(()=>import("./views/agentProperty/agentProperty"))
 const PriceList =lazy(()=>import("./views/priceList/priceList"))
 const AccountInfo =lazy(()=>import("./views/accountInfo/accountInfo"))
 const BillingInfo =lazy(()=>import("./views/billingInfo/billingInfo"))
+const AgentDashboard =lazy(()=>import("./views/agentDashboard/agentDashboard"))
 
 export const route = [
   {
@@ -36,17 +37,24 @@ export const route = [
     element: <ListPoperty/>,
     private: true,
   },
-  {
-    path: "/",
-    element: <ListPoperty/>,
-    private: true,
-  },
+  // {
+  //   path: "/",
+  //   element: <ListPoperty/>,
+  //   private: true,
+  // },
 
   {
     path: "/real-estate",
     element: <RealEstate/>,
     private: true,
   },
+  
+  {
+    path: "/dashboard-home",
+    element: <AgentDashboard/>,
+    private: true,
+  },
+
   
   {
     path: "/agent-listing",
