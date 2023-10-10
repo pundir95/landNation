@@ -2,7 +2,8 @@ import { lazy } from "react";
 
 // Import your route components using lazy loading
 const Home = lazy(() => import("./views/home"));
-const AgentSignIn =lazy(()=>import(""))
+const AgentSignIn =lazy(()=>import("./views/authentication/agentSignIn/"))
+const AgentSignUp =lazy(()=>import("./views/authentication/agentSignup/agentSignup"))
 const FindAgent =lazy(()=>import("./views/findAgent/findAgent"))
 const Result =lazy(()=>import("./views/resultPage"))
 const SingleProperty =lazy(()=>import("./views/singleProperty/singleProperty"))
@@ -81,10 +82,16 @@ export const route = [
   },
 
   {
-    path: "/sign-In",
+    path: "/sign-in",
     element: <AgentSignIn />,
     private: false,
   },
+  
+  {
+    path: "/sign-up",
+    element: <AgentSignUp />,
+  },
+
   {
     path: "/result",
     element: <Result/>,

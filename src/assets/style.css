@@ -800,8 +800,90 @@ padding: 28px 43px;
 
 
 
-/* Login Page */
-/* Login Page End */
+/* Login & Signup Page */
+.auth-section
+{
+    background: #465E38;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.inner-auth
+{
+    background: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, .1);
+}
+.auth-content
+{
+    padding: 40px 30px;
+}
+.login-logo
+{
+    width: 200px;
+}
+.auth-heading
+{
+    font-size: 32px;
+    margin-bottom: 16px;
+    font-weight: 300;
+    color: #465E38;
+}
+.auth-text
+{
+    color: #828282;
+    font-size: 18px;
+}
+.auth-field
+{
+    border-radius: 0px;
+    padding: 17px 20px;
+    font-size: 16px;
+}
+.auth-field:focus
+{
+    border-color: #465E38;
+}
+.auth-btn
+{
+    width: 100%;
+    display: block;
+    padding: 16px;
+    border: 1px solid #465E38;
+    background: #465E38;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 300;
+    transition: .4s ease;
+}
+.auth-btn:hover
+{
+    background: transparent;
+    color: #465E38;
+}
+.auth-link
+{
+    color: #828282;
+    font-size: 16px;
+    font-weight: 300;
+    transition: .4s ease;
+}
+.auth-link span
+{
+    color: #000;
+    font-weight: 500;
+}
+.auth-link:hover
+{
+    text-decoration: underline;
+}
+.auth-img img
+{
+    height: 100%;
+    object-fit: cover;
+}
+/* Login & Signup Page End */
 
 
 /* Footer */
@@ -878,6 +960,35 @@ padding: 28px 43px;
 
 
 /* Media Query */
+@media only screen and (max-width: 1400px)
+{
+    .login-logo
+    {
+        width: 170px;
+    }
+    .auth-heading
+    {
+        font-size: 26px;
+    }
+    .auth-text
+    {
+        font-size: 16px;
+    }
+    .auth-field
+    {
+        padding: 13px 20px;
+    }
+    .auth-btn
+    {
+        font-size: 16px;
+        padding: 13px;
+    }
+    .auth-img img
+    {
+        height: 500px;
+        object-fit: cover;
+    }
+}
 @media only screen and (max-width: 1200px)
 {
     .header-custom .header-listing .header-link

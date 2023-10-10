@@ -15,16 +15,26 @@ const AgentSignIn = () => {
                 <div className='auth-content d-flex justify-content-between flex-column h-100'>
                     <div>
                       <img src={logoImg} className='login-logo mb-5' />
-                      <h2 className='text-center auth-heading'>Login</h2>
+                      <h2 className='text-center auth-heading'>Sign Up</h2>
                       <p className='text-center auth-text mb-4'>Let's get Started</p>
                       <form>
+                        <Row>
+                            <Col md={6}>
+                                <input type='text' placeholder='Enter First Name' className='form-control auth-field shadow-none mb-3' />
+                            </Col>
+                            <Col md={6}>
+                                <input type='text' placeholder='Enter Last Name' className='form-control auth-field shadow-none mb-3' />
+                            </Col>
+                        </Row>
                         <input type='email' placeholder='Enter Email' className='form-control auth-field shadow-none mb-3' />
+                        <input type='text' placeholder='Enter Username' className='form-control auth-field shadow-none mb-3' />
                         <input type='password' placeholder='Enter Password' className='form-control auth-field shadow-none mb-4' />
-                        <button className='auth-btn'>Login</button>
+                        <input type='password' placeholder='Enter Confirm Password' className='form-control auth-field shadow-none mb-4' />
+                        <button className='auth-btn'>Sign Up</button>
                       </form>
                     </div>
                     <div className='text-center mt-3'>
-                      <a href='#' className='auth-link'>Don't have Account? <span>Sign Up</span></a>
+                      <a href='#' className='auth-link'>Already have Account? <span>Login</span></a>
                     </div>
                 </div>
               </Col>
