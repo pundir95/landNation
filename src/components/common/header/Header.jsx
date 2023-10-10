@@ -8,6 +8,7 @@ import { useLocation,Link} from "react-router-dom";
 
 const Header = ({ scrolled }) => {
   let location = useLocation();
+  
   return (
     <>
       <Navbar
@@ -15,7 +16,7 @@ const Header = ({ scrolled }) => {
         className={
           scrolled
             ? "header-custom fixed-top scrolled"
-            : "header-custom fixed-top"
+            : "header-custom fixed-top active-header"
         }
       >
         <Container>
@@ -36,7 +37,7 @@ const Header = ({ scrolled }) => {
                   <>
                     <Link
                       to={item.link}
-                      className={`'header-link'${
+                      className={`header-link ${
                         location.pathname == item.link ? "active" : ""
                       }`}
                     >
