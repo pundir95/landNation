@@ -11,8 +11,8 @@ export const homePageData = () => {
 
 const HomeProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState([]);
-  const navigate=useNavigate()
-   const propertyList=   useSelector(selectPropertyListData)
+  const propertyList=   useSelector(selectPropertyListData)
+    const navigate=useNavigate()
 
   const handleSearchValue = (value) => {
     setSearchValue(value);
