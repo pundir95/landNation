@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialHomeData = {
     loading: false,
+    searchValue:[],
     propertyList: []
 }
 
@@ -20,11 +21,15 @@ export const homeDataSlice = createSlice({
             state.loading = false;
             state.propertyList = [{ name: "pamkajk", age: "12" }]
         },
+
+        setSearchValue:(state,action)=>{
+            state.searchValue=action.payload
+        }
     }
 
 })
 
-export const { setPageTitle } = homeDataSlice.actions
+export const { setPageTitle,setSearchValue } = homeDataSlice.actions
 
 export default homeDataSlice.reducer
 
@@ -38,3 +43,10 @@ export function getProperty(payload) {
         }
     };
 }
+
+export function selectedSearchValue(payload) {
+    return async (dispatch) => {
+        dispatch(setSearchValue(payload))
+    };
+}
+

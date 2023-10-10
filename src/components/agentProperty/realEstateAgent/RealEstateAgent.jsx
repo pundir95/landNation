@@ -1,12 +1,11 @@
 import React from 'react'
 import { Container } from 'react-bootstrap'
-import userImage from '../../assets/images/user-profile.png';
-import '../../assets/style.css';
+import userImage from '../../../assets/images/user-profile.png';
 
-const RealEstate = () => {
+const RealEstateAgent = () => {
   return (
     <>
-        <section className="picture-section">
+        <section className="picture-section mb-4 mt-3">
             <Container>
                 <div className="feature-card p-3"> 
                     <div className="d-flex align-items-center mt-3 mb-4">
@@ -38,4 +37,4 @@ const RealEstate = () => {
   )
 }
 
-export default RealEstate
+export default RealEstateAgent

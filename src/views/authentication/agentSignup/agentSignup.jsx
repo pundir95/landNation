@@ -15,8 +15,6 @@ const AgentSignIn = () => {
 
   const { loading } = useSelector((state) => state.authData);
 
-  console.log(loading);
-
   const onSubmit = (values) => {
     const data = {
       email: values.email,

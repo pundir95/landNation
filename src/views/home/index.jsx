@@ -20,7 +20,6 @@ const Home = () => {
       <Features />
       <PaginationComponent/>
       <ListWithUs />
-      <Footer />
     </HomeProvider>
 
     </>

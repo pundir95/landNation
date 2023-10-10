@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Navigate, Outlet } from "react-router-dom";
 import Header from '../components/common/header/Header';
+import Footer from '../components/common/footer/Footer';
 
 const PrivateLayout = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -22,7 +23,6 @@ const PrivateLayout = () => {
 
   return (
     <>
-    <Header scrolled={scrolled}/>
     <Outlet/>
     </>
   )

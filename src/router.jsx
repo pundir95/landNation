@@ -5,38 +5,36 @@ const Home = lazy(() => import("./views/home"));
 const AgentSignIn =lazy(()=>import("./views/authentication/agentSignIn/"))
 const AgentSignUp =lazy(()=>import("./views/authentication/agentSignup/agentSignup"))
 const FindAgent =lazy(()=>import("./views/findAgent/findAgent"))
-const Result =lazy(()=>import("./views/resultPage"))
 const SingleProperty =lazy(()=>import("./views/singleProperty/singleProperty"))
 const ListPoperty =lazy(()=>import("./views/listProperty/listProperty"))
-const RealEstate =lazy(()=>import("./views/realEstate/realEstate"))
 const AgentProperty =lazy(()=>import("./views/agentProperty/agentProperty"))
 const PriceList =lazy(()=>import("./views/priceList/priceList"))
 const AccountInfo =lazy(()=>import("./views/accountInfo/accountInfo"))
 const BillingInfo =lazy(()=>import("./views/billingInfo/billingInfo"))
-const AgentDashboard =lazy(()=>import("./views/agentDashboard/agentDashboard"))
+const AgentDashboard =lazy(()=>import("./views/adminAgent/agentDashboard/agentDashboard"))
 
 export const route = [
   {
     path: "/",
     element: <Home />,
-    private: true,
+    private: false,
   },
   {
     path: "/find-agent",
     element: <FindAgent/>,
-    private: true,
+    private: false,
   },
 
   {
     path: "/single-property-details/:id",
     element: <SingleProperty/>,
-    private: true,
+    private: false,
   },
 
   {
     path: "/list-property",
     element: <ListPoperty/>,
-    private: true,
+    private: false,
   },
   // {
   //   path: "/",
@@ -44,11 +42,6 @@ export const route = [
   //   private: true,
   // },
 
-  {
-    path: "/real-estate",
-    element: <RealEstate/>,
-    private: true,
-  },
   
   {
     path: "/dashboard-home",
@@ -60,25 +53,25 @@ export const route = [
   {
     path: "/agent-listing",
     element: <AgentProperty/>,
-    private: true,
+    private: false,
   },
 
   {
     path: "/price-list",
     element: <PriceList/>,
-    private: true,
+    private: false,
   },
   
   {
     path: "/account-info",
     element: <AccountInfo/>,
-    private: true,
+    private: false,
   },
   
   {
     path: "/billing-info",
     element: <BillingInfo/>,
-    private: true,
+    private: false
   },
 
   {
@@ -90,11 +83,7 @@ export const route = [
   {
     path: "/sign-up",
     element: <AgentSignUp />,
-  },
-
-  {
-    path: "/result",
-    element: <Result/>,
     private: false,
   },
+
 ];

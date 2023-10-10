@@ -18,8 +18,6 @@ const HomeProvider = ({ children }) => {
     setSearchValue(value);
   };
 
-  console.log(propertyList)
-
   const handleSelectedPropertyCard=(id)=>{
     navigate(`single-property-details/${id}`)
   }

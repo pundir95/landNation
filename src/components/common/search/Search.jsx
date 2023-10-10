@@ -4,10 +4,13 @@ import searchIcon from "../../../assets/images/search-icon.svg";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { homePageData } from "../../../context/HomeProvider";
+import { selectedSearchValue } from "../../../store/slices/homeDataSlice";
+import { useDispatch } from "react-redux";
 
 const animatedComponents = makeAnimated();
 
 const Search = () => {
+  const dispatch =useDispatch()
   const {handleSearchValue}=homePageData()
   const selectOptions = [
     { value: 'option1', label: 'Option 1' },
@@ -20,6 +23,7 @@ const Search = () => {
   const handleSearch=(value)=>{
     handleSearchValue(value)
     setSelectedOptions(value)
+    dispatch(selectedSearchValue(value))
   }
   return (
     <div className="search-card">
