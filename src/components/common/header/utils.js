@@ -25,10 +25,12 @@ export const HEADER_MENU = [
     },
     {
         name: "Buyer Sign Up",
+        link:'/sign-up',
         active: false
     },
     {
         name: "Login",
+        link:'/sign-in',
         active: false
     },
 

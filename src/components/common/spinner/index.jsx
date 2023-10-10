@@ -1,10 +1,10 @@
 import React from "react";
-import { SpinnerLoader as Spinner } from "react-bootstrap/Spinner";
+import  Spinner  from "react-bootstrap/Spinner";
 
-const Spinner = () => {
+const Loader = () => {
   return (
-    <SpinnerLoader role="status" animation="border" variant="primary"/>
+    <Spinner role="status" animation="border" variant="light"/>
   );
 };
 
-export default Spinner;
+export default Loader;
