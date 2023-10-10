@@ -152,6 +152,10 @@ font-weight: 600 !important;
 {
     background: #6F766C;
 }
+.active-header
+{
+    background: #6F766C;
+}
 .close-btn-icon
 {
     display: none;
@@ -564,6 +568,54 @@ font-weight: 600 !important;
 .close-btn img
 {
     width: 9px;
+}
+.filter-header
+{
+    padding: 14px 30px;
+    background: #F8F8F8;
+}
+.filter-subhead
+{
+    padding: 6px 16px;
+    border-radius: 8px;
+    background: #202020;
+    font-size: 18px;
+    color: #fff;
+}
+.active-filter
+{
+    position: relative;
+    display: inline-block;
+    min-width: 134px;
+    background: #E9E9E9;
+    padding: 6px 30px 6px 6px;
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+    color: #000;
+    border-radius: 50px;
+}
+.close-filter
+{
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+}
+.active-filter img
+{
+    width: 8px;
+}
+.rounded-12
+{
+    border-radius: 12px;
 }
 
 
