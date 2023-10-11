@@ -13,7 +13,6 @@ const Header = ({ scrolled }) => {
   let location = useLocation();
   const pathToCheck = "/single-property-details";
   const regex = new RegExp(`^${pathToCheck}(\/.*)?$`);
-console.log(searchValue)
   return (
     <>
       <Navbar
@@ -31,9 +30,9 @@ console.log(searchValue)
         }
       >
         <Container>
-          <Navbar.Brand className="header-logo" href="/">
+          <Link className="header-logo" to="/">
             <img src={logoImg} />
-          </Navbar.Brand>
+          </Link>
           <Navbar.Toggle
             className="header-toggle"
             aria-controls="basic-navbar-nav"

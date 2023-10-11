@@ -77,13 +77,13 @@ export const route = [
   {
     path: "/sign-in",
     element: <AgentSignIn />,
-    private: false,
+    private: true,
   },
   
   {
     path: "/sign-up",
     element: <AgentSignUp />,
-    private: false,
+    private: true,
   },
 
 ];

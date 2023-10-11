@@ -30,7 +30,7 @@ const AgentSignIn = () => {
               <Col lg={6}>
                 <div className="auth-content d-flex justify-content-between flex-column h-100">
                   <div>
-                    <img src={logoImg} className="login-logo mb-5" />
+                    <Link to="/"><img src={logoImg} className="login-logo mb-5" /></Link>
                     <h2 className="text-center auth-heading">Login</h2>
                     <p className="text-center auth-text mb-4">
                       Let's get Started
