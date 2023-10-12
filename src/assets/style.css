@@ -875,6 +875,10 @@ padding: 28px 43px;
 {
     width: 200px;
 }
+.errorMessage{
+    font-size: 14px;
+    color:red
+}
 .auth-heading
 {
     font-size: 32px;
@@ -1034,6 +1038,7 @@ padding: 28px 43px;
     {
         font-size: 16px;
         padding: 13px;
+        cursor: pointer;
     }
     .auth-img img
     {

@@ -1,14 +1,20 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import Search from "../../common/search/Search";
 import { Container, Row, Col } from "react-bootstrap";
 import { homePageData } from "../../../context/HomeProvider";
+import CustomButton from "../../common/filterButton/CustomButton";
+import filterIcon from "../../../assets/images/filter.svg";
 
 const HeroSection = () => {
-  const { searchValue } = homePageData();
-  console.log(window.location.pathname)
+  const { searchValue, openCloseModal } = homePageData();
+  console.log(window.location.pathname);
   return (
     <>
-      <section className={searchValue.length == 0 ? "hero-section" : "pt-90 search-results"}>
+      <section
+        className={
+          searchValue.length == 0 ? "hero-section" : "pt-90 search-results"
+        }
+      >
         <Container>
           <div className="inner-hero">
             {searchValue.length == 0 && (
@@ -17,6 +23,14 @@ const HeroSection = () => {
               </h1>
             )}
             <Search />
+            {searchValue.length > 0 ? (
+              <CustomButton customClass="filter-btn" onClick={openCloseModal}>
+                <img src={filterIcon} />
+                Filter
+              </CustomButton>
+            ) : (
+              ""
+            )}
           </div>
         </Container>
       </section>

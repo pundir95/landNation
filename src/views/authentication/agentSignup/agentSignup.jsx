@@ -8,10 +8,11 @@ import logoImg from "../../../assets/images/LandNation-dark.svg";
 import loginImg from "../../../assets/images/hero-section2.png";
 import { agentRegister } from "../../../store/slices/authDataSlice";
 import Loader from "../../../components/common/spinner";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const AgentSignIn = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { loading } = useSelector((state) => state.authData);
 
@@ -24,10 +25,11 @@ const AgentSignIn = () => {
       password: values.password,
       confirm_password: values.confirmPassword,
     };
-    dispatch(agentRegister(data));
-
-
-    
+    dispatch(
+      agentRegister(data, () => {
+        navigate("/sign-in");
+      })
+    );
   };
   return (
     <>
@@ -38,7 +40,9 @@ const AgentSignIn = () => {
               <Col lg={6}>
                 <div className="auth-content d-flex justify-content-between flex-column h-100">
                   <div>
-                    <Link to="/"><img src={logoImg} className="login-logo mb-5" /></Link>
+                    <Link to="/">
+                      <img src={logoImg} className="login-logo mb-5" />
+                    </Link>
                     <h2 className="text-center auth-heading">Sign Up</h2>
                     <p className="text-center auth-text mb-4">
                       Let's get Started
@@ -57,7 +61,11 @@ const AgentSignIn = () => {
                               placeholder="Enter First Name"
                               className="form-control auth-field shadow-none mb-3"
                             />
-                            <ErrorMessage name="firstName" component="p" />
+                            <ErrorMessage
+                              name="firstName"
+                              component="p"
+                              className="errorMessage"
+                            />
                           </Col>
                           <Col md={6}>
                             <Field
@@ -66,7 +74,11 @@ const AgentSignIn = () => {
                               placeholder="Enter Last Name"
                               className="form-control auth-field shadow-none mb-3"
                             />
-                            <ErrorMessage name="lastName" component="p" />
+                            <ErrorMessage
+                              name="lastName"
+                              component="p"
+                              className="errorMessage"
+                            />
                           </Col>
                         </Row>
                         <Field
@@ -75,7 +87,11 @@ const AgentSignIn = () => {
                           placeholder="Enter Email"
                           className="form-control auth-field shadow-none mb-3"
                         />
-                        <ErrorMessage name="email" component="p" />
+                        <ErrorMessage
+                          name="email"
+                          component="p"
+                          className="errorMessage"
+                        />
 
                         <Field
                           type="text"
@@ -83,7 +99,11 @@ const AgentSignIn = () => {
                           placeholder="Enter Username"
                           className="form-control auth-field shadow-none mb-3"
                         />
-                        <ErrorMessage name="userName" component="p" />
+                        <ErrorMessage
+                          name="userName"
+                          component="p"
+                          className="errorMessage"
+                        />
 
                         <Field
                           type="password"
@@ -91,14 +111,22 @@ const AgentSignIn = () => {
                           placeholder="Enter Password"
                           className="form-control auth-field shadow-none mb-4"
                         />
-                        <ErrorMessage name="password" component="p" />
+                        <ErrorMessage
+                          name="password"
+                          component="p"
+                          className="errorMessage"
+                        />
                         <Field
                           type="password"
                           name="confirmPassword"
                           placeholder="Enter Confirm Password"
                           className="form-control auth-field shadow-none mb-4"
                         />
-                        <ErrorMessage name="confirmPassword" component="p" />
+                        <ErrorMessage
+                          name="confirmPassword"
+                          component="p"
+                          className="errorMessage"
+                        />
                         <button type="submit" className="auth-btn">
                           {loading ? <Loader /> : `Sign Up`}
                         </button>

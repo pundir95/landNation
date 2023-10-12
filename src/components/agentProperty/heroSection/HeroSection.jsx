@@ -2,9 +2,12 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Search from "../../common/search/Search";
 import { homePageData } from "../../../context/HomeProvider";
+import CustomButton from "../../common/filterButton/CustomButton";
+import filterIcon from "../../../assets/images/filter.svg";
+
 
 const HeroSection = () => {
-  const { searchValue } = homePageData();
+  const { searchValue,openCloseModal } = homePageData();
   return (
     <section
       className={
@@ -19,6 +22,14 @@ const HeroSection = () => {
             </h1>
           )}
           <Search />
+          {searchValue.length > 0 ? (
+              <CustomButton customClass="filter-btn" onClick={openCloseModal}>
+                <img src={filterIcon} />
+                Filter
+              </CustomButton>
+            ) : (
+              ""
+            )}
         </div>
       </Container>
     </section>

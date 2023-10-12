@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { selectPropertyListData } from "../store/selectors/homeDataSelector";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { handleFilterModal } from "../store/slices/homeDataSlice";
 let valueData=""
 const HomePageContext = createContext(valueData);
 
@@ -10,8 +11,8 @@ export const homePageData = () => {
 };
 
 const HomeProvider = ({ children }) => {
+  const dispatch=useDispatch()
   const [searchValue, setSearchValue] = useState([]);
-  const propertyList=   useSelector(selectPropertyListData)
     const navigate=useNavigate()
 
   const handleSearchValue = (value) => {
@@ -21,6 +22,9 @@ const HomeProvider = ({ children }) => {
   const handleSelectedPropertyCard=(id)=>{
     navigate(`single-property-details/${id}`)
   }
+  const openCloseModal=()=>{
+    dispatch(handleFilterModal())
+  }
   return (
     <>
       <HomePageContext.Provider
@@ -28,7 +32,8 @@ const HomeProvider = ({ children }) => {
           handleSearchValue,
           searchValue,
           valueData,
-          handleSelectedPropertyCard
+          handleSelectedPropertyCard,
+          openCloseModal
         }}
       >
         {children}

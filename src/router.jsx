@@ -36,12 +36,6 @@ export const route = [
     element: <ListPoperty/>,
     private: false,
   },
-  // {
-  //   path: "/",
-  //   element: <ListPoperty/>,
-  //   private: true,
-  // },
-
   
   {
     path: "/dashboard-home",

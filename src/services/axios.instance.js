@@ -2,7 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 
 const instance = axios.create({
-  baseURL: "https://api-fitijee-grep-dev.fastor.ai/admin",
+  baseURL: "http://192.168.1.85:8000/",
   // baseURL: 'https://registration-api.fiitjee.com/admin',
 });
 
@@ -11,7 +11,7 @@ let token = localStorage.getItem("token");
 // Request Interceptor
 instance.interceptors.request.use(
   (config) => {
-    config.headers["Authorization"] = `Bearer ${token}`;
+    // config.headers["Authorization"] = `Bearer ${token}`;
     return config;
   },
   (error) => {
@@ -26,6 +26,7 @@ instance.interceptors.response.use(
   },
   (error) => {
     const message = error.response.data?.message || "Something went wrong";
+    console.log(error,"ins")
     toast.error(message);
     return Promise.reject(error);
   }

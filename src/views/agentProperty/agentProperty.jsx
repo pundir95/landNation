@@ -9,34 +9,44 @@ import FeatureList from "../../components/home/featuredProperties/FeatureList";
 import { Container } from "react-bootstrap";
 import { selectedSearchValue } from "../../store/slices/homeDataSlice";
 import PaginationComponent from "../../components/common/pagination/PaginationComponent";
+import Filter from "../../components/common/filter/Filter";
 
 const AgentProperty = () => {
-  const { searchValue } = useSelector((state) => state.homeData);
-  const dispatch =useDispatch()
+  const { searchValue, openFilterModal } = useSelector(
+    (state) => state.homeData
+  );
+  const dispatch = useDispatch();
 
-   useEffect(()=>{
-   return ()=>{
-    dispatch(selectedSearchValue([]))
-   }
-   },[])
+  useEffect(() => {
+    return () => {
+      dispatch(selectedSearchValue([]));
+    };
+  }, []);
+  console.log(openFilterModal,"openFilterModal")
   return (
     <>
       <HomeProvider>
-        <HeroSection />
-        {searchValue.length > 0 ? (
+        {!openFilterModal ? (
           <>
-            <RealEstateAgent />
-            <section className="feature-section">
-            <Container>
-              <div className="inner-feature">
-                <FeatureList />
-                <PaginationComponent/>
-              </div>
-              </Container>
-            </section>
+            <HeroSection />
+            {searchValue.length > 0 ? (
+              <>
+                <RealEstateAgent />
+                <section className="feature-section">
+                  <Container>
+                    <div className="inner-feature">
+                      <FeatureList />
+                      <PaginationComponent />
+                    </div>
+                  </Container>
+                </section>
+              </>
+            ) : (
+              <TopAgentList />
+            )}
           </>
         ) : (
-          <TopAgentList />
+          <Filter />
         )}
       </HomeProvider>
     </>

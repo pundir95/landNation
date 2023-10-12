@@ -12,14 +12,14 @@ import { Link } from "react-router-dom";
 
 const AgentSignIn = () => {
   const { loading } = useSelector((state) => state.authData);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const onSubmit = (values) => {
     const data = {
       email: values.email,
       password: values.password,
     };
     dispatch(agentLogin(data));
-    window.location.href="/dashboard-home"
+    // window.location.href="/dashboard-home"
   };
   return (
     <>
@@ -30,7 +30,9 @@ const AgentSignIn = () => {
               <Col lg={6}>
                 <div className="auth-content d-flex justify-content-between flex-column h-100">
                   <div>
-                    <Link to="/"><img src={logoImg} className="login-logo mb-5" /></Link>
+                    <Link to="/">
+                      <img src={logoImg} className="login-logo mb-5" />
+                    </Link>
                     <h2 className="text-center auth-heading">Login</h2>
                     <p className="text-center auth-text mb-4">
                       Let's get Started
@@ -47,7 +49,11 @@ const AgentSignIn = () => {
                           placeholder="Enter Email"
                           className="form-control auth-field shadow-none mb-3"
                         />
-                        <ErrorMessage name="email" component="p" />
+                        <ErrorMessage
+                          name="email"
+                          component="p"
+                          className="errorMessage"
+                        />
 
                         <Field
                           type="password"
@@ -55,8 +61,18 @@ const AgentSignIn = () => {
                           placeholder="Enter Password"
                           className="form-control auth-field shadow-none mb-4"
                         />
-                        <ErrorMessage name="password" component="p" />
-                        <button className="auth-btn">{loading?<Loader/>:'Login'}</button>
+                        <ErrorMessage
+                          name="password"
+                          component="p"
+                          className="errorMessage"
+                        />
+                        <button
+                          className="auth-btn"
+                          type="submit"
+                          disabled={loading}
+                        >
+                          {loading ? <Loader /> : "Login"}
+                        </button>
                       </Form>
                     </Formik>
                   </div>

@@ -3,15 +3,15 @@ import { Col, Row } from "react-bootstrap";
 import { FEATURE_LIST } from "../../../constant/home";
 import FeatureCard from "./FeatureCard";
 
-const FeatureList = () => {
+const FeatureList = ({list}) => {
   return (
     <div>
       <Row>
-        {FEATURE_LIST.map((item, index) => {
+        {list?.map((item, index) => {
           return (
-            <>
+            <React.Fragment key={item.id}>
               <FeatureCard item={item} />
-            </>
+            </React.Fragment>
           );
         })}
       </Row>

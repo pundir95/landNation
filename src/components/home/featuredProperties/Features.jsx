@@ -2,9 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import FeatureList from "./FeatureList";
 import { homePageData } from "../../../context/HomeProvider";
+import { useSelector } from "react-redux";
 
 const Features = () => {
   const { searchValue } = homePageData();
+  const {propertyFeatureList}=   useSelector(state=>state.homeData)
   return (
     <section className="feature-section">
       <Container>
@@ -14,7 +16,7 @@ const Features = () => {
           ) : (
             ""
           )}
-          <FeatureList />
+          <FeatureList list={propertyFeatureList} />
         </div>
       </Container>
     </section>
