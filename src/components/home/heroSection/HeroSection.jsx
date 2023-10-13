@@ -17,20 +17,22 @@ const HeroSection = () => {
       >
         <Container>
           <div className="inner-hero">
-            {searchValue.length == 0 && (
+            {searchValue.length == 0 && ( 
               <h1 className="hero-title text-center">
                 Search and find your dream
               </h1>
             )}
-            <Search />
-            {searchValue.length > 0 ? (
-              <CustomButton customClass="filter-btn" onClick={openCloseModal}>
-                <img src={filterIcon} />
-                Filter
-              </CustomButton>
-            ) : (
-              ""
-            )}
+            <div className="d-flex gap-10 align-items-center">
+              <Search />
+              {searchValue.length > 0 ? (
+                <CustomButton customClass="filter-btn" onClick={openCloseModal}>
+                  <img src={filterIcon} />
+                  Filter
+                </CustomButton>
+              ) : (
+                ""
+              )}
+            </div>
           </div>
         </Container>
       </section>
