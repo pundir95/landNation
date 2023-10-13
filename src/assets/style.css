@@ -20,7 +20,7 @@ ul,li
 }
 a
 {
-    text-decoration: none;
+    text-decoration: none !important;
 }
 img
 {
@@ -99,6 +99,10 @@ font-weight: 600 !important;
     }
 /* font size end */
 /* Header CSS */
+.header-custom
+{
+    padding: 20px 0 !important;
+}
 .header-custom .header-listing
 {
     gap: 30px;
@@ -940,6 +944,62 @@ padding: 28px 43px;
     object-fit: cover;
 }
 /* Login & Signup Page End */
+/* Filter */
+.filter-sidebar
+{
+    position: fixed;
+    top: 0px;
+    right: 0;
+    width: 100%;
+    max-width: 768px;
+    z-index: 9999;
+    background: #fff;
+    height: 100vh;
+    overflow: auto;
+}
+.filter-container
+{
+    max-width: 300px;
+}
+.form-common-btn
+{
+    min-width: 100px;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    line-height: 29px;
+    color: #fff;
+    font-weight: 600;
+    padding: 2px 6px;
+    background: #465E38;
+    border-radius: 50px;
+    border: 1px solid #465E38;  
+}
+.common-outlined-btn
+{
+    background: transparent;
+    color: #465E38;
+}
+.gap-10
+{
+    gap: 10px;
+}
+.feature-card .common-outlined-field
+{
+    min-width: 100px;
+    display: inline-block;
+    text-align: center;
+    font-size: 13px;
+    line-height: 29px;
+    color: #465E38;
+    font-weight: 600;
+    padding: 2px 6px;
+    background: transparent;
+    border-radius: 50px;
+    border: 1px solid #465E38;
+}
+/* Filter End */
+
 
 
 /* Footer */

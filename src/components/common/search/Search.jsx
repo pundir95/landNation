@@ -34,7 +34,7 @@ const Search = () => {
     setTimerValue(timer);
   }
   return (
-    <div className="search-card">
+    <div className="search-card w-100 gap-10">
       <Row className="align-items-center">
         <Col lg={2} md={3}>
           <button className="search-by-map">Search by map</button>
