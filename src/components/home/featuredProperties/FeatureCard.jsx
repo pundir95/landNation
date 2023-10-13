@@ -4,18 +4,19 @@ import { homePageData } from "../../../context/HomeProvider";
 
 const FeatureCard = ({item}) => {
   const {handleSelectedPropertyCard}=homePageData()
+  let baseURL=import.meta.env.VITE_BASE_URL
   return (
     <Col md={6} className="mb-3" onClick={()=>handleSelectedPropertyCard(item.id)}>
       <div className="feature-card p-3">
         <div className="feature-imgbx position-relative mb-3">
-          <img src={item.image} className="feature-img" />
+          <img src={baseURL+item?.media[0]?.thumbnail} className="feature-img" />
           <span className="acres-length">160 Acres</span>
         </div>
         <div className="d-flex justify-content-between mb-4">
           <div>
-            <h3 className="feature-title mb-0">{item.price}</h3>
+            <h3 className="feature-title mb-0">{item.price_per_acre}</h3>
             <p className="feature-text">
-             {item.text}
+             {`${item.city},${item.country}`}
             </p>
           </div>
           <div>

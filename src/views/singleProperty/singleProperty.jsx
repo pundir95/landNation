@@ -12,8 +12,10 @@ import { useSelector } from "react-redux";
 import SearchWithFilter from "../../components/singleProperty/searchWithFilter/SearchWithFilter";
 
 const SingleProperty = () => {
-  const {openFilterModal}=useSelector(state=>state.homeData)
-  console.log(openFilterModal)
+  const { openFilterModal } = useSelector((state) => state.homeData);
+  const { singlePropertyDetailsData, loading } = useSelector(
+    (state) => state.homeData
+  );
   return (
     <>
       <HomeProvider>
@@ -23,8 +25,11 @@ const SingleProperty = () => {
           <>
             <section className="picture-section mt-5">
               <Container>
-                <SearchWithFilter/>
-                <PropertySearchCard />
+                <SearchWithFilter />
+                <PropertySearchCard
+                  singlePropertyDetailsData={singlePropertyDetailsData}
+                  loading={loading}
+                />
                 <div>
                   <Map />
                   <ContactSeller />

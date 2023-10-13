@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 const Features = () => {
   const { searchValue } = homePageData();
-  const {propertyFeatureList}=   useSelector(state=>state.homeData)
+  const {propertyList}=   useSelector(state=>state.homeData)
   return (
     <section className="feature-section">
       <Container>
@@ -16,7 +16,7 @@ const Features = () => {
           ) : (
             ""
           )}
-          <FeatureList list={propertyFeatureList} />
+          <FeatureList list={propertyList} />
         </div>
       </Container>
     </section>

@@ -4,26 +4,34 @@ import searchIcon from "../../../assets/images/search-icon.svg";
 import Select from "react-select";
 import makeAnimated from "react-select/animated";
 import { homePageData } from "../../../context/HomeProvider";
-import { selectedSearchValue } from "../../../store/slices/homeDataSlice";
-import { useDispatch } from "react-redux";
+import { searchByStateCityOrCountry, selectedSearchValue } from "../../../store/slices/homeDataSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const animatedComponents = makeAnimated();
 
 const Search = () => {
   const dispatch =useDispatch()
+  const [isLoading, setIsLoading] = useState(false);
   const {handleSearchValue}=homePageData()
-  const selectOptions = [
-    { value: 'option1', label: 'Option 1' },
-    { value: 'option2', label: 'Option 2' },
-    { value: 'option3', label: 'Option 3' },
-    { value: 'option4', label: 'Option 4' },
-    { value: 'option5', label: 'Option 5' },
-  ]
+  const [timerValue, setTimerValue] = useState("");
+  const {stateCityOrCountry,searchValue}=useSelector(state=>state.homeData);
   const [selectedOptions, setSelectedOptions] = useState([]);
+
   const handleSearch=(value)=>{
+    // if (searchValue.some((value) => value.value === value)) {
+    //   // Value is a duplicate; do nothing
+    //   return;
+    // }
     handleSearchValue(value)
     setSelectedOptions(value)
     dispatch(selectedSearchValue(value))
+  }
+  const inputChange=(e)=>{ 
+    clearTimeout(timerValue);
+    const timer = setTimeout(() => {
+      dispatch(searchByStateCityOrCountry(e))
+    },500)
+    setTimerValue(timer);
   }
   return (
     <div className="search-card">
@@ -36,9 +44,11 @@ const Search = () => {
             <div className="d-flex align-items-center w-100">
               <Select
                 closeMenuOnSelect={false}
-                components={animatedComponents}
+                components={{animatedComponents,NoOptionsMessage: () => "No Result" }}
                 isMulti
-                options={selectOptions}
+                isSearchable
+                isLoading={isLoading}
+                options={stateCityOrCountry}
                 className="search-field w-100"
                 placeholder="Enter a State, Country or City"
                 styles={{
@@ -50,8 +60,10 @@ const Search = () => {
                   }),
                 }}
                 onChange={handleSearch}
-                value={selectedOptions}
+                // value={selectedOptions}
+                onInputChange={inputChange}
               />
+         
               <button className="search-btn">
                 <img src={searchIcon} />
               </button>

@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { selectPropertyListData } from "../store/selectors/homeDataSelector";
 import { useDispatch, useSelector } from "react-redux";
-import { handleFilterModal } from "../store/slices/homeDataSlice";
+import { getFeatureProperty, getSinglePropertyDetails, handleFilterModal, searchAgentProperty, searchByStateCityOrCountry } from "../store/slices/homeDataSlice";
+import { activityFilter } from "../utils/utility";
 let valueData=""
 const HomePageContext = createContext(valueData);
 
@@ -11,12 +12,33 @@ export const homePageData = () => {
 };
 
 const HomeProvider = ({ children }) => {
-  const dispatch=useDispatch()
+  const dispatch=useDispatch();
+  const navigate=useNavigate()
+
   const [searchValue, setSearchValue] = useState([]);
-    const navigate=useNavigate()
+  const [activeFilterApplied,setActiveFilterApplied]=useState(activityFilter)
+  
+
+  useEffect(()=>{
+    if(activeFilterApplied.search){
+      dispatch(searchAgentProperty(activeFilterApplied))
+
+    }
+  },[activeFilterApplied])
 
   const handleSearchValue = (value) => {
     setSearchValue(value);
+    if(value?.length>0){
+      let convertArrayToString = value?.map((it) => it.value);
+      console.log(convertArrayToString.join(","),)
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        search:convertArrayToString.join(",")
+      })
+    }else{
+      dispatch(getFeatureProperty())
+    }
+
   };
 
   const handleSelectedPropertyCard=(id)=>{
