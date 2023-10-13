@@ -19,18 +19,17 @@ const Home = () => {
   return (
     <>
       <HomeProvider>
-        {openFilterModal ? (
-          <Filter />
-        ) : (
-          <>
-            <HeroSection />
-            <FindAgent />
-            <BrowseByType />
-            <Features />
-            <PaginationComponent />
-            <ListWithUs />
-          </>
-        )}
+        {openFilterModal ? <Filter /> : ""}
+
+        <>
+          <HeroSection />
+          <FindAgent />
+          <BrowseByType />
+          <Features />
+          <PaginationComponent />
+          <ListWithUs />
+        </>
+
       </HomeProvider>
     </>
   );
