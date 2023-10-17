@@ -17,7 +17,10 @@ const Filter = () => {
     clearAppliedFilter,
     finalResultFilter,
     selectedCheckBox,
-    setSelectedCheckBox
+    setSelectedCheckBox,
+    removedCurrentFilter,
+    selectedCheckBox1,
+    setSelectedCheckBox1
   } = homePageData();
   const { searchValue } = useSelector((state) => state.homeData);
 
@@ -34,7 +37,12 @@ const Filter = () => {
         ...activeFilterApplied,
         region: indexValue,
       });
-      setCurrentFilterItem([...currentFilterItem,itemValue])
+      let data={
+        itemValue,
+        indexValue,
+        currentFilterSelect
+      }
+      setCurrentFilterItem([...currentFilterItem,data])
       if (selectedCheckBox.includes(indexValue)) {
         setSelectedCheckBox(selectedCheckBox.filter((item) => item !== indexValue));
       } else {
@@ -45,7 +53,17 @@ const Filter = () => {
         ...activeFilterApplied,
         country: indexValue,
       });
-      setCurrentFilterItem([...currentFilterItem,itemValue])
+      let data={
+        itemValue,
+        indexValue,
+        currentFilterSelect
+      }
+      setCurrentFilterItem([...currentFilterItem,data])
+      if (selectedCheckBox1.includes(indexValue)) {
+        setSelectedCheckBox1(selectedCheckBox1.filter((item) => item !== indexValue));
+      } else {
+        setSelectedCheckBox1([...selectedCheckBox1, indexValue]);
+      }
     } else if (currentFilterSelect == "price") {
       setActiveFilterApplied({
         ...activeFilterApplied,
@@ -53,8 +71,22 @@ const Filter = () => {
       });
       setCurrentFilterItem([...currentFilterItem,itemValue])
     }
+    else if (currentFilterSelect == "acres") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        acres: indexValue,
+      });
+      setCurrentFilterItem([...currentFilterItem,itemValue])
+    }
+    else if (currentFilterSelect == "property") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        property: indexValue,
+      });
+      setCurrentFilterItem([...currentFilterItem,itemValue])
+    }
   };
-
+console.log(finalResultFilter,"finalResultFilter")
   return (
     <>
       <section className="filter-sidebar">
@@ -72,8 +104,8 @@ const Filter = () => {
                 return (
                   <>
                     <span className="active-filter">
-                      {item}
-                      <button className="close-filter">
+                      {item.itemValue.value}
+                      <button className="close-filter" onClick={()=>removedCurrentFilter(item)}>
                         <img src={closeIcon} />
                       </button>
                     </span>
@@ -94,19 +126,19 @@ const Filter = () => {
                         class="form-check-input"
                         type="checkbox"
                         checked={selectedCheckBox.includes(index+1)}
-                        value={item.region}
+                        value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
                           handleFilterChange(
                             e,
                             index + 1,
-                            item.region,
+                            item,
                             "region"
                           )
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">{item.region}</p>
+                      <p className="text-body fw-normal mb-0">{item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -119,6 +151,7 @@ const Filter = () => {
               filterList={propertyFilterList?.country}
               filterTitle="Country"
               handleFilterChange={handleFilterChange}
+              selectedCheckBox1={selectedCheckBox1}
             />
             {/* <button className="form-common-btn common-outlined-btn">
         See More
@@ -134,16 +167,16 @@ const Filter = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        checked={selectedCheckBox.includes(index+1)}
-                        value={item.price_range}
+                        // checked={selectedCheckBox.includes(index+1)}
+                        value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1, item.price_range, "price")
+                          handleFilterChange(e, index + 1, item, "price")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        ${item.price_range}
+                        ${item.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
@@ -181,12 +214,12 @@ const Filter = () => {
                         value={item.acre_range}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1, "acres")
+                          handleFilterChange(e, index + 1,item.acre_range, "acres")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        ${item.acre_range}
+                        ${item.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
@@ -223,15 +256,15 @@ const Filter = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value={item.property_type}
+                        value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1, "property")
+                          handleFilterChange(e, index + 1,item.value, "property")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        {item?.property_type}
+                        {item?.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>
@@ -251,12 +284,15 @@ const Filter = () => {
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value=""
+                        value={item.value}
                         id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1,item?.value, "bedrooms")
+                        }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        ${item.bedroom_range}
+                        ${item.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
@@ -296,7 +332,7 @@ const Filter = () => {
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        ${item.bedroom_range}
+                        ${item.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
@@ -324,19 +360,22 @@ const Filter = () => {
           <div className="feature-card rounded-12 p-1">
             <div className="filter-subhead mb-4">Square Feet</div>
             <div className="filter-container px-3 pb-3">
-              {propertyFilterList?.bedrooms?.map((item, index) => {
+              {propertyFilterList?.square_feet?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value=""
+                        value={item.value}
                         id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1,item.value, "property")
+                        }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        ${item.bedroom_range}
+                        ${item.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
@@ -376,7 +415,7 @@ const Filter = () => {
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
                       <p className="text-body fw-normal mb-0">
-                        {item?.availability_status}
+                        {item?.value}
                       </p>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>

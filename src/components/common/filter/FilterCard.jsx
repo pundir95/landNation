@@ -1,6 +1,6 @@
 import React from "react";
 
-const FilterCard = ({ filterList, filterTitle,handleFilterChange }) => {
+const FilterCard = ({ filterList, filterTitle,handleFilterChange,selectedCheckBox1 }) => {
   return (
     <>
       <div className="filter-subhead mb-4">{filterTitle}</div>
@@ -12,12 +12,13 @@ const FilterCard = ({ filterList, filterTitle,handleFilterChange }) => {
                 <input
                   class="form-check-input"
                   type="checkbox"
-                  value={item?.country}
+                  checked={selectedCheckBox1.includes(index+1)}
+                  value={item?.value}
                   id="flexCheckDefault"
-                  onChange={(e)=>handleFilterChange(e,index+1,item.country,"country")}
+                  onChange={(e)=>handleFilterChange(e,index+1,item,"country")}
                 />
                 <label class="form-check-label" for="flexCheckDefault" />
-                <p className="text-body fw-normal mb-0">{item?.country}</p>
+                <p className="text-body fw-normal mb-0">{item?.value}</p>
                 <p className="text-body fw-normal mb-0">{item?.count}</p>
               </div>
             </>

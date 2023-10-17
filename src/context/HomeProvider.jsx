@@ -37,9 +37,10 @@ const HomeProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState([]);
   const [activeFilterApplied, setActiveFilterApplied] =
     useState(activityFilter);
-    const [currentFilterItem,setCurrentFilterItem]=useState([]);
-     const [finalResultFilter,setFinalResultFilter]=useState([]);
-     const [selectedCheckBox,setSelectedCheckBox]=useState([])
+  const [currentFilterItem, setCurrentFilterItem] = useState([]);
+  const [finalResultFilter, setFinalResultFilter] = useState([]);
+  const [selectedCheckBox, setSelectedCheckBox] = useState([]);
+  const [selectedCheckBox1, setSelectedCheckBox1] = useState([]);
 
   useEffect(() => {
     dispatch(propertyFilter());
@@ -107,17 +108,33 @@ const HomeProvider = ({ children }) => {
   };
 
   const viewFilterResult = () => {
-    setFinalResultFilter(currentFilterItem)
-    navigate(generateApiUrl(activeFilterApplied, "find-property"));
+    setFinalResultFilter(currentFilterItem);
+    // navigate(generateApiUrl(activeFilterApplied, "find-property"));
     dispatch(handleFilterModal());
     dispatch(searchAgentProperty(activeFilterApplied));
   };
 
-  const clearAppliedFilter=()=>{
-    setCurrentFilterItem([])
-    setFinalResultFilter([])
-  }
-
+  const clearAppliedFilter = () => {
+    setCurrentFilterItem([]);
+    setFinalResultFilter([]);
+  };
+  const removedCurrentFilter = (val) => {
+    let deleteFiltered = finalResultFilter.filter(
+      (item) => item.itemValue.value !== val.itemValue.value
+    );
+    setFinalResultFilter(deleteFiltered);
+    if (val.currentFilterSelect == "region") {
+      let deleteCheckBox = selectedCheckBox.filter(
+        (del) => del !== val.indexValue
+      );
+      setSelectedCheckBox(deleteCheckBox);
+    } else if (val.currentFilterSelect == "country") {
+      let deleteCheckBox = selectedCheckBox1.filter(
+        (del) => del !== val.indexValue
+      );
+      setSelectedCheckBox1(deleteCheckBox);
+    }
+  };
   return (
     <>
       <HomePageContext.Provider
@@ -139,8 +156,10 @@ const HomeProvider = ({ children }) => {
           clearAppliedFilter,
           finalResultFilter,
           setSelectedCheckBox,
-          selectedCheckBox
-
+          selectedCheckBox,
+          removedCurrentFilter,
+          setSelectedCheckBox1,
+          selectedCheckBox1,
         }}
       >
         {children}

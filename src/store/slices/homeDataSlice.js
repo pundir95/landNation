@@ -96,7 +96,7 @@ export function getProperty(payload) {
 export function getFeatureProperty(payload) {
     return async (dispatch) => {
         try {
-            let result = await instance.get('/agent-property/featured');
+            let result = await instance.get('/realestate/agent-property/featured');
             dispatch(setPropertyFeatureList(result.data))
         } catch (error) {
 
@@ -112,16 +112,15 @@ export function selectedSearchValue(payload) {
 
 export function searchAgentProperty(payload) {
     return async (dispatch) => {
-        let result = await instance.get(generateApiUrl(payload, "property/"))
-        dispatch(selectSearchProperty(result.data))
+        let result = await instance.get(generateApiUrl(payload, "/realestate/property/"))
+        dispatch(selectSearchProperty(result.data.results))
     };
 }
-
 
 export function searchByStateCityOrCountry(payload) {
     return async (dispatch) => {
         dispatch(setSinglePropertyDetailsLoading())
-        let result = await instance.get(`/property/names/?name=${payload}`)
+        let result = await instance.get(`/realestate/property/names/?name=${payload}`)
         console.log(result)
         dispatch(setStateCityOrCountryList(result.data))
     }
@@ -136,7 +135,7 @@ export function handleFilterModal() {
 export function getSinglePropertyDetails(payload){
     return async (dispatch)=>{
         dispatch(setSinglePropertyDetailsLoading())
-        let result=await instance.get(`agent-property/${payload}/`)
+        let result=await instance.get(`/realestate/agent-property/${payload}/`)
         dispatch(setSinglePropertyDetails(result.data))
     }
 }
@@ -145,7 +144,7 @@ export function getSinglePropertyDetails(payload){
 export function getPropertyListSortFilter(payload){
     return async (dispatch)=>{
         dispatch(setSinglePropertyDetailsLoading())
-        let result=await instance.get(`property/?ordering=${payload}`)
+        let result=await instance.get(`/realestate/property/?ordering=${payload}`)
         dispatch(setPropertyListSortFilter(result.data))
     }
 }
@@ -153,7 +152,7 @@ export function getPropertyListSortFilter(payload){
 export function _likeDislikeProperties(payload){
     return async (dispatch)=>{
         dispatch(setSinglePropertyDetailsLoading())
-        let result=await instance.put(`agent-property/${payload.id}/`,{
+        let result=await instance.put(`/realestate/agent-property/${payload.id}/`,{
          featured:payload.featured
         })
      console.log(result)
@@ -164,8 +163,9 @@ export function _likeDislikeProperties(payload){
 export function getBrowseByCategory(payload,callBack){
     return async (dispatch)=>{
         // dispatch(setSinglePropertyDetailsLoading())
-        let result=await instance.get(`property/?property_type=${payload}`)
-        dispatch(setBrowseByCategory(result.data))
+        let result=await instance.get(`/realestate/property/?property_type=${payload}`)
+        console.log(result,"browser")
+        dispatch(setBrowseByCategory(result.data.results))
         return callBack()
      }
 }
@@ -173,7 +173,7 @@ export function getBrowseByCategory(payload,callBack){
 export function propertyFilter(){
     return async (dispatch)=>{
         // dispatch(setSinglePropertyDetailsLoading())
-        let result=await instance.get(`/property/count/`)
+        let result=await instance.get(`/realestate/property/count/`)
         dispatch(setPropertyFilterList(result.data))
 
      }

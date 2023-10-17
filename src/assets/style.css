@@ -970,10 +970,11 @@ padding: 28px 43px;
     right: 0;
     width: 100%;
     max-width: 768px;
-    z-index: 9999;
+    z-index: 99999999;
     background: #fff;
     height: 100vh;
     overflow: auto;
+
 }
 .filter-container
 {
