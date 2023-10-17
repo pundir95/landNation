@@ -7,7 +7,7 @@ import Search from "../../common/search/Search";
 const SearchWithFilter = () => {
     const { openCloseModal } = homePageData();
   return (
-    <div className="search-results">
+    <div className="search-results d-flex gap-10 align-items-center">
       <Search />
       <CustomButton customClass="filter-btn" onClick={openCloseModal}>
         <img src={filterIcon} />

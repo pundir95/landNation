@@ -8,11 +8,11 @@ export const HEADER_MENU = [
         name: "Search By State",
         active: false
     },
-    {
-        name: "Add a Listing",
-        link:'/list-property',
-        active: false
-    },
+    // {
+    //     name: "Add a Listing",
+    //     link:'/list-property',
+    //     active: false
+    // },
     {
         name: "Find an Agent",
         link:'/agent-listing',
@@ -23,11 +23,11 @@ export const HEADER_MENU = [
         link:'/price-list',
         active: false
     },
-    {
-        name: "Buyer Sign Up",
-        link:'/sign-up',
-        active: false
-    },
+    // {
+    //     name: "Buyer Sign Up",
+    //     link:'/sign-up',
+    //     active: false
+    // },
     {
         name: "Login",
         link:'/sign-in',

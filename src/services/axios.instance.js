@@ -11,7 +11,8 @@ let token = localStorage.getItem("token");
 // Request Interceptor
 instance.interceptors.request.use(
   (config) => {
-    // config.headers["Authorization"] = `Bearer ${token}`;
+    console.log("hellp")
+    config.headers["Authorization"] = "hello";
     return config;
   },
   (error) => {

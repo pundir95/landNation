@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 const Header = ({ scrolled }) => {
   const { searchValue } = useSelector((state) => state.homeData);
-  const bannerAvailable = ["/agent-listing", "/price-list"];
+  const bannerAvailable = ["/agent-listing", "/price-list","/find-property/"];
   let location = useLocation();
   const pathToCheck = "/single-property-details";
   const regex = new RegExp(`^${pathToCheck}(\/.*)?$`);

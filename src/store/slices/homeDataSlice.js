@@ -9,7 +9,8 @@ const initialHomeData = {
     openFilterModal: false,
     propertyList: [],
     stateCityOrCountry: [],
-    singlePropertyDetailsData:{}
+    singlePropertyDetailsData:{},
+    propertyFilterList:{}
 }
 
 export const homeDataSlice = createSlice({
@@ -43,6 +44,7 @@ export const homeDataSlice = createSlice({
                 return { value: item, label: item }
             })
             state.stateCityOrCountry = mapStateorCityCountryOptions
+            state.loading = false;
         },
         selectSearchProperty: (state, action) => {
             state.propertyList = action.payload
@@ -55,12 +57,28 @@ export const homeDataSlice = createSlice({
         setSinglePropertyDetails: (state, action) => {
          state.singlePropertyDetailsData=action.payload
          state.loading=false
+        },
+
+        setPropertyListSortFilter:(state,action)=>{
+         state.loading=true
+         state.propertyList=action.payload
+        },
+
+        setLikeDislikeProperties:(state,action)=>{
+            state.propertyList=action.payload
+        },
+        setBrowseByCategory:(state,action)=>{
+            state.propertyList=action.payload
+        },
+
+        setPropertyFilterList:(state,action)=>{
+            state.propertyFilterList=action.payload
         }
     }
 
 })
 
-export const { setPageTitle, setSearchValue, setFilterModal, setPropertyFeatureList, setStateCityOrCountryList, setSinglePropertyDetailsLoading,selectSearchProperty, setSinglePropertyDetails } = homeDataSlice.actions
+export const { setPageTitle, setSearchValue, setFilterModal, setPropertyFeatureList,setPropertyFilterList,setBrowseByCategory, setStateCityOrCountryList, setSinglePropertyDetailsLoading,selectSearchProperty, setSinglePropertyDetails,setPropertyListSortFilter,setLikeDislikeProperties } = homeDataSlice.actions
 
 export default homeDataSlice.reducer
 
@@ -102,6 +120,7 @@ export function searchAgentProperty(payload) {
 
 export function searchByStateCityOrCountry(payload) {
     return async (dispatch) => {
+        dispatch(setSinglePropertyDetailsLoading())
         let result = await instance.get(`/property/names/?name=${payload}`)
         console.log(result)
         dispatch(setStateCityOrCountryList(result.data))
@@ -121,4 +140,48 @@ export function getSinglePropertyDetails(payload){
         dispatch(setSinglePropertyDetails(result.data))
     }
 }
+
+
+export function getPropertyListSortFilter(payload){
+    return async (dispatch)=>{
+        dispatch(setSinglePropertyDetailsLoading())
+        let result=await instance.get(`property/?ordering=${payload}`)
+        dispatch(setPropertyListSortFilter(result.data))
+    }
+}
+
+export function _likeDislikeProperties(payload){
+    return async (dispatch)=>{
+        dispatch(setSinglePropertyDetailsLoading())
+        let result=await instance.put(`agent-property/${payload.id}/`,{
+         featured:payload.featured
+        })
+     console.log(result)
+    }
+}
+
+
+export function getBrowseByCategory(payload,callBack){
+    return async (dispatch)=>{
+        // dispatch(setSinglePropertyDetailsLoading())
+        let result=await instance.get(`property/?property_type=${payload}`)
+        dispatch(setBrowseByCategory(result.data))
+        return callBack()
+     }
+}
+
+export function propertyFilter(){
+    return async (dispatch)=>{
+        // dispatch(setSinglePropertyDetailsLoading())
+        let result=await instance.get(`/property/count/`)
+        dispatch(setPropertyFilterList(result.data))
+
+     }
+}
+
+
+
+
+
+
 

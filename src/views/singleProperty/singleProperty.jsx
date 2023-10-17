@@ -19,13 +19,10 @@ const SingleProperty = () => {
   return (
     <>
       <HomeProvider>
-        {openFilterModal ? (
-          <Filter />
-        ) : (
-          <>
+        {openFilterModal? <Filter />:"" }
             <section className="picture-section mt-5">
               <Container>
-                <SearchWithFilter />
+                {/* <SearchWithFilter /> */}
                 <PropertySearchCard
                   singlePropertyDetailsData={singlePropertyDetailsData}
                   loading={loading}
@@ -36,8 +33,6 @@ const SingleProperty = () => {
                 </div>
               </Container>
             </section>
-          </>
-        )}
       </HomeProvider>
     </>
   );

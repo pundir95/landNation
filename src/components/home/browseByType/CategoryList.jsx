@@ -9,7 +9,7 @@ const CategoryList = () => {
         {BROWSER_LIST?.map((item, index) => {
           return (
             <React.Fragment key={index}>
-              <Card cardImage={item.image} cardTitle={item.title} />
+              <Card cardImage={item.image} cardTitle={item.title} passingId={item.passingId} />
             </React.Fragment>
           );
         })}

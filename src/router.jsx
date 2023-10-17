@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import FindProperties from "./views/findPoperties";
 
 // Import your route components using lazy loading
 const Home = lazy(() => import("./views/home"));
@@ -28,6 +29,11 @@ export const route = [
   {
     path: "/single-property-details/:id",
     element: <SingleProperty/>,
+    private: false,
+  },
+  {
+    path: "/find-property",
+    element: <FindProperties/>,
     private: false,
   },
 

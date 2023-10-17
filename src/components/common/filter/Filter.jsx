@@ -4,7 +4,8 @@ import { homePageData } from "../../../context/HomeProvider";
 import { Container } from "react-bootstrap";
 
 const Filter = () => {
-  const {openCloseModal}=homePageData()
+  const {openCloseModal,propertyFilterList}=homePageData()
+  console.log(propertyFilterList,"propertyFilterList")
   return (
     <>
       <section className="filter-sidebar">

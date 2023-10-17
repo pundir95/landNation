@@ -9,12 +9,13 @@ import HomeProvider from "../../context/HomeProvider";
 import PaginationComponent from "../../components/common/pagination/PaginationComponent";
 import { useDispatch, useSelector } from "react-redux";
 import Filter from "../../components/common/filter/Filter";
-import { getFeatureProperty } from "../../store/slices/homeDataSlice";
+import { getFeatureProperty, selectedSearchValue } from "../../store/slices/homeDataSlice";
 const Home = () => {
   const { openFilterModal } = useSelector((state) => state.homeData);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getFeatureProperty());
+    dispatch(selectedSearchValue([]));
   }, []);
   return (
     <>
@@ -23,7 +24,7 @@ const Home = () => {
 
         <>
           <HeroSection />
-          <FindAgent />
+          {/* <FindAgent /> */}
           <BrowseByType />
           <Features />
           <PaginationComponent />

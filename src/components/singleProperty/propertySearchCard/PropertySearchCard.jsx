@@ -4,39 +4,38 @@ import { Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getSinglePropertyDetails } from "../../../store/slices/homeDataSlice";
+import { BASE_URL } from "../../../utils/utility";
 
 const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
   const dispatch = useDispatch();
   const location = useLocation();
-  let baseURL = import.meta.env.VITE_BASE_URL;
   let id = location.pathname.split("/")[2];
   useEffect(() => {
     if (id) {
       dispatch(getSinglePropertyDetails(id));
     }
   }, []);
+
   return (
     <>
       {loading ? (
-        <p>Loafin</p>
+        <p>Loading..........</p>
       ) : (
         <div className="feature-card p-3">
           <Row>
             <Col lg={6}>
               <div>
                 <img
-                  src={
-                    singlePropertyDetailsData &&
-                    singlePropertyDetailsData?.media.length > 0 &&
-                    baseURL + singlePropertyDetailsData?.media[0]?.thumbnail
-                  }
+                  src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[0]?.media}
                   className="picture-card-imd"
                 />
               </div>
             </Col>
             <Col lg={6}>
               <div>
-                {/* <img src={singlePropertyDetailsData&& baseURL+singlePropertyDetailsData?.media[1]?.thumbnail}className="picture-card-imd" /> */}
+              <img
+                  src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[1]?.media}
+                className="picture-card-imd" />
               </div>
             </Col>
           </Row>
@@ -50,10 +49,10 @@ const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
           </div>
           <div>
             <h3 className="text-body mb-4">
-              McCrory, AR <br /> {singlePropertyDetailsData?.country}
+              {singlePropertyDetailsData?.user_profile?.username} <br /> {`${singlePropertyDetailsData?.city}, ${singlePropertyDetailsData?.country}`}
             </h3>
             <h3 className="text-body">
-              Size:<span className="feature-text"> 140 acres</span>
+              Size:<span className="feature-text">{singlePropertyDetailsData?.acres}</span>
             </h3>
             <h3 className="text-body">
               Type:
@@ -66,17 +65,7 @@ const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
           <div className="position-relative">
             <h3 className="Refuge-title my-4">Refuge on the Cache</h3>
             <p className="feature-text ">
-              +/-137 Acres in Jackson County, Arkansas, near McCrory <br />
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry. Lorem Ipsum has been the industry's standard dummy text
-              ever since the 1500s, when an unknown printer took a galley of
-              type and scrambled it to make a type specimen book. It has
-              survived not only five centuries, but also the leap into
-              electronic typesetting, remaining essentially unchanged. It was
-              popularised in the 1960s with the release of Letraset sheets
-              containing Lorem Ipsum passages, and more recently with desktop
-              publishing software like Aldus PageMaker including versions of
-              Lorem Ipsum.
+             {singlePropertyDetailsData?.listing_description}
             </p>
             <div className="d-flex justify-content-end">
               <a
