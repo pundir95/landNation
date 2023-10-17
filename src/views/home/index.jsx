@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import "../../assets/style.css";
+// import "../../assets/style.css";
 import BrowseByType from "../../components/home/browseByType/BrowseByType";
 import Features from "../../components/home/featuredProperties/Features";
 import ListWithUs from "../../components/home/listWithUs/ListWithUs";

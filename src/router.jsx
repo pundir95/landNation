@@ -13,6 +13,7 @@ const PriceList =lazy(()=>import("./views/priceList/priceList"))
 const AccountInfo =lazy(()=>import("./views/accountInfo/accountInfo"))
 const BillingInfo =lazy(()=>import("./views/billingInfo/billingInfo"))
 const AgentDashboard =lazy(()=>import("./views/adminAgent/agentDashboard/agentDashboard"))
+const ListingInformation =lazy(()=>import("./views/adminAgent/listingInformation"))
 
 export const route = [
   {
@@ -46,6 +47,12 @@ export const route = [
   {
     path: "/dashboard-home",
     element: <AgentDashboard/>,
+    private: true,
+  },
+
+  {
+    path: "/listing-information",
+    element: <ListingInformation/>,
     private: true,
   },
 
