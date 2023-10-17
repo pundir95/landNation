@@ -14,6 +14,7 @@ const AccountInfo =lazy(()=>import("./views/accountInfo/accountInfo"))
 const BillingInfo =lazy(()=>import("./views/billingInfo/billingInfo"))
 const AgentDashboard =lazy(()=>import("./views/adminAgent/agentDashboard/agentDashboard"))
 const ListingInformation =lazy(()=>import("./views/adminAgent/listingInformation"))
+const AgentOtp =lazy(()=>import("./views/authentication/agentOtp/agentOtp"))
 
 export const route = [
   {
@@ -90,6 +91,12 @@ export const route = [
   {
     path: "/sign-up",
     element: <AgentSignUp />,
+    private: true,
+  },
+
+  {
+    path: "/agent-otp",
+    element: <AgentOtp />,
     private: true,
   },
 
