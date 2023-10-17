@@ -15,7 +15,7 @@ const FindProperties = () => {
   return (
     <>
       <HomeProvider>
-        <section className="filter-section pt-2 mt-5 pt-90 search-results">
+        <section className="filter-section mt-5 pt-90 search-results">
           <Container>
             <div className="d-flex gap-10 align-items-center">
               <Search />

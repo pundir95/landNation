@@ -20,7 +20,7 @@ const SingleProperty = () => {
     <>
       <HomeProvider>
         {openFilterModal? <Filter />:"" }
-            <section className="picture-section mt-5">
+            <section className="picture-section mt-5 pt-90">
               <Container>
                 {/* <SearchWithFilter /> */}
                 <PropertySearchCard
