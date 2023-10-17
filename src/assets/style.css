@@ -26,7 +26,8 @@ img
 {
     width: 100%;
 }
-.text-body {
+.text-body
+{
     color: #000 !important;
     font-size: 16px;
     font-weight: 400;
@@ -43,6 +44,10 @@ img
 {
     margin-bottom: 21px;
 }
+.mb-40
+{
+    margin-bottom: 40px;
+}
 .fw-semibold
 {
     font-weight: 600 !important;
@@ -50,6 +55,10 @@ img
 .color-9e9e9e
 {
     color: #9e9e9e !important;
+}
+.text-body.color-828282
+{
+    color: #828282 !important;
 }
 .color-828282
 {
@@ -62,6 +71,10 @@ img
 .color-465E38
 {
     color: #465E38 !important;
+}
+.color-red
+{
+    color: #FF0000;
 }
 /* bg color start */
 .bg-lightblk {
@@ -96,6 +109,10 @@ font-weight: 600 !important;
 }
 .font-22 {
     font-size: 22px !important;
+    }
+    .font-13
+    {
+        font-size: 13px !important;
     }
 /* font size end */
 /* Header CSS */
@@ -1072,6 +1089,129 @@ padding: 28px 43px;
 .lock-grey-img
 {
     width: 19px;
+}
+
+.dashboard-user-img
+{
+    width: 111px;
+    height: 111px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.stats-table .stats-head
+{
+    padding: 0;
+}
+
+.stats-table .stats-head p
+{
+    margin-bottom: 0px;
+    background-color: #202020;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 400;
+}
+.stats-table thead .stats-head:first-child p
+{
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+.stats-table thead .stats-head:last-child p
+{
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.stats-data
+{
+    font-size: 13px;
+    color: #828282;
+}
+.view-all-btn
+{
+    font-size: 13px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: #000;
+}
+.view-all-btn span
+{
+    border: 1px solid #828282;
+    width: 36px;
+    padding: 2px 11px;
+    border-radius: 50px;
+    transition: .4s ease;
+}
+.view-all-btn img
+{
+    width: 14px;
+}
+.view-all-btn .white-arrow
+{
+    display: none;
+}
+/* .view-all-btn:hover .grey-arrow
+{
+    display: none;
+}
+.view-all-btn:hover .white-arrow
+{
+    display: block;
+} */
+.step-container
+{
+    border: 1px solid #D2D2D2;
+    border-radius: 11px;
+    display: flex;
+    max-width: 400px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.step-cont
+{
+    position: relative;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 13px;
+    color: #000;
+    font-weight: 400;
+}
+.step-cont:before
+{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -10px;
+    width: 22px;
+    height: 100%;
+    background: url('../assets/images/step-arrow.svg');
+}
+.step-container .step-cont:last-child::before
+{
+    display: none;
+}
+.step-cont span
+{
+    width: 31px;
+    height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 1px solid #d2d2d2;
+    color: #000;
+    font-size: 16px;
+    font-weight: 400;
+    margin-right: 8px;
+}
+.step-cont.active span
+{
+    border-color: #465E38;
+    color: #fff;
+    background: #465E38;
 }
 
 
