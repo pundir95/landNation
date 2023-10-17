@@ -17,7 +17,7 @@ export const BROWSER_LIST = [
     },
     {
         id: 3,
-        passingId:0,
+        passingId:1,
         title: "Commercial",
         image: browserImg, // Replace with the actual image source
     },

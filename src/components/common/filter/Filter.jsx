@@ -1,11 +1,60 @@
-import React from "react";
+import React, { useState } from "react";
 import closeIcon from "../../../assets/images/cancel.svg";
 import { homePageData } from "../../../context/HomeProvider";
 import { Container } from "react-bootstrap";
+import FilterCard from "./FilterCard";
+import { useSelector } from "react-redux";
 
 const Filter = () => {
-  const {openCloseModal,propertyFilterList}=homePageData()
-  console.log(propertyFilterList,"propertyFilterList")
+  const {
+    openCloseModal,
+    propertyFilterList,
+    viewFilterResult,
+    setActiveFilterApplied,
+    activeFilterApplied,
+    currentFilterItem,
+    setCurrentFilterItem,
+    clearAppliedFilter,
+    finalResultFilter,
+    selectedCheckBox,
+    setSelectedCheckBox
+  } = homePageData();
+  const { searchValue } = useSelector((state) => state.homeData);
+
+  const handleFilterChange = (
+    e,
+    indexValue,
+    itemValue,
+    currentFilterSelect
+  ) => {
+    if (currentFilterSelect == "region") {
+      console.log(e.target.value);
+      console.log(indexValue);
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        region: indexValue,
+      });
+      setCurrentFilterItem([...currentFilterItem,itemValue])
+      if (selectedCheckBox.includes(indexValue)) {
+        setSelectedCheckBox(selectedCheckBox.filter((item) => item !== indexValue));
+      } else {
+        setSelectedCheckBox([...selectedCheckBox, indexValue]);
+      }
+    } else if (currentFilterSelect == "country") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        country: indexValue,
+      });
+      setCurrentFilterItem([...currentFilterItem,itemValue])
+    } else if (currentFilterSelect == "price") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        price: indexValue,
+      });
+      setCurrentFilterItem([...currentFilterItem,itemValue])
+    }
+  };
+
   return (
     <>
       <section className="filter-sidebar">
@@ -19,61 +68,339 @@ const Filter = () => {
           <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Active Filters</div>
             <div className="mb-4">
-              <span className="active-filter">
-                Arkansas{" "}
-                <button className="close-filter">
-                  <img src={closeIcon} />
-                </button>
-              </span>
+              {finalResultFilter.map((item) => {
+                return (
+                  <>
+                    <span className="active-filter">
+                      {item}
+                      <button className="close-filter">
+                        <img src={closeIcon} />
+                      </button>
+                    </span>
+                  </>
+                );
+              })}
             </div>
           </div>
+
           <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Region</div>
             <div className="filter-container px-3">
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Southern Region</p>
-                <p className="text-body fw-normal mb-0">8,431</p>
-              </div>
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Western Region</p>
-                <p className="text-body fw-normal mb-0">5,455</p>
-              </div>
+              {propertyFilterList?.region?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked={selectedCheckBox.includes(index+1)}
+                        value={item.region}
+                        id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(
+                            e,
+                            index + 1,
+                            item.region,
+                            "region"
+                          )
+                        }
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">{item.region}</p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
           <div className="feature-card rounded-12 p-1 mb-3">
-            <div className="filter-subhead mb-4">Country</div>
-            <div className="filter-container px-3 pb-3">
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Southern Region</p>
-                <p className="text-body fw-normal mb-0">8,431</p>
-              </div>
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Western Region</p>
-                <p className="text-body fw-normal mb-0">5,455</p>
-              </div>
-              <button className="form-common-btn common-outlined-btn">See More</button>
-            </div>
+            <FilterCard
+              filterList={propertyFilterList?.country}
+              filterTitle="Country"
+              handleFilterChange={handleFilterChange}
+            />
+            {/* <button className="form-common-btn common-outlined-btn">
+        See More
+      </button> */}
           </div>
           <div className="feature-card rounded-12 p-1">
             <div className="filter-subhead mb-4">Price</div>
             <div className="filter-container px-3 pb-3">
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Southern Region</p>
-                <p className="text-body fw-normal mb-0">8,431</p>
-              </div>
-              <div className="mb-3 d-flex align-items-center justify-content-between">
-                <p className="text-body fw-normal mb-0">Western Region</p>
-                <p className="text-body fw-normal mb-0">5,455</p>
-              </div>
+              {propertyFilterList?.price?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        checked={selectedCheckBox.includes(index+1)}
+                        value={item.price_range}
+                        id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1, item.price_range, "price")
+                        }
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        ${item.price_range}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+
               <p className="text-body fw-semibold mb-2 pt-3">Custom Price</p>
               <div className="d-flex gap-10">
-                <input type="text" className="form-control common-outlined-field shadow-none" placeholder="Min" />
-                <input type="text" className="form-control common-outlined-field shadow-none" placeholder="Max" />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Min"
+                />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Max"
+                />
                 <button className="form-common-btn">Price</button>
               </div>
             </div>
           </div>
+
+          <div className="feature-card rounded-12 p-1">
+            <div className="filter-subhead mb-4">Parcel Size</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.acres?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value={item.acre_range}
+                        id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1, "acres")
+                        }
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        ${item.acre_range}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+
+              <p className="text-body fw-semibold mb-2 pt-3">
+                Custom Size (Acres)
+              </p>
+              <div className="d-flex gap-10">
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Min"
+                />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Max"
+                />
+                <button className="form-common-btn">Add</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="feature-card rounded-12 p-1 mb-3">
+            <div className="filter-subhead mb-4">Property Types</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.property_type?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value={item.property_type}
+                        id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1, "property")
+                        }
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        {item?.property_type}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item?.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="feature-card rounded-12 p-1">
+            <div className="filter-subhead mb-4">Bedrooms</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.bedrooms?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        ${item.bedroom_range}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+
+              <p className="text-body fw-semibold mb-2 pt-3">Custom Beds</p>
+              <div className="d-flex gap-10">
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Min"
+                />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Max"
+                />
+                <button className="form-common-btn">Price</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="feature-card rounded-12 p-1">
+            <div className="filter-subhead mb-4">BathRoom</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.bedrooms?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        ${item.bedroom_range}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+
+              <p className="text-body fw-semibold mb-2 pt-3">Custom Beds</p>
+              <div className="d-flex gap-10">
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Min"
+                />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Max"
+                />
+                <button className="form-common-btn">Price</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="feature-card rounded-12 p-1">
+            <div className="filter-subhead mb-4">Square Feet</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.bedrooms?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        ${item.bedroom_range}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+
+              <p className="text-body fw-semibold mb-2 pt-3">Custom Beds</p>
+              <div className="d-flex gap-10">
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Min"
+                />
+                <input
+                  type="text"
+                  className="form-control common-outlined-field shadow-none"
+                  placeholder="Max"
+                />
+                <button className="form-common-btn">Price</button>
+              </div>
+            </div>
+          </div>
+
+          <div className="feature-card rounded-12 p-1 mb-3">
+            <div className="filter-subhead mb-4">Availability</div>
+            <div className="filter-container px-3 pb-3">
+              {propertyFilterList?.availability?.map((item, index) => {
+                return (
+                  <>
+                    <div className="mb-3 d-flex align-items-center justify-content-between">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value=""
+                        id="flexCheckDefault"
+                      />
+                      <label class="form-check-label" for="flexCheckDefault" />
+                      <p className="text-body fw-normal mb-0">
+                        {item?.availability_status}
+                      </p>
+                      <p className="text-body fw-normal mb-0">{item?.count}</p>
+                    </div>
+                  </>
+                );
+              })}
+            </div>
+          </div>
         </Container>
+        <div className="d-flex justify-content-between">
+          <div>
+            <button className="form-control common-outlined-field shadow-none">
+              Save Search
+            </button>
+          </div>
+          <div className="d-flex">
+            <button className="form-control common-outlined-field shadow-none" onClick={clearAppliedFilter}>
+              Clear
+            </button>
+            <button className="form-common-btn" onClick={viewFilterResult}>
+              View Result
+            </button>
+          </div>
+        </div>
       </section>
     </>
   );

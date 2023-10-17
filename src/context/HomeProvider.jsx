@@ -14,7 +14,12 @@ import {
   searchByStateCityOrCountry,
   selectedSearchValue,
 } from "../store/slices/homeDataSlice";
-import { activityFilter, getValuesFromUrlLocation, stringToArrayOfObjects } from "../utils/utility";
+import {
+  activityFilter,
+  generateApiUrl,
+  getValuesFromUrlLocation,
+  stringToArrayOfObjects,
+} from "../utils/utility";
 let valueData = "";
 const HomePageContext = createContext(valueData);
 
@@ -26,16 +31,19 @@ const HomeProvider = ({ children }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   let location = useLocation();
-  const {propertyFilterList}=useSelector(state=>state.homeData)
+  const { propertyFilterList } = useSelector((state) => state.homeData);
   let urlSearchValues = getValuesFromUrlLocation(location);
 
   const [searchValue, setSearchValue] = useState([]);
   const [activeFilterApplied, setActiveFilterApplied] =
     useState(activityFilter);
+    const [currentFilterItem,setCurrentFilterItem]=useState([]);
+     const [finalResultFilter,setFinalResultFilter]=useState([]);
+     const [selectedCheckBox,setSelectedCheckBox]=useState([])
 
-    useEffect(()=>{
-    dispatch(propertyFilter())
-    },[])
+  useEffect(() => {
+    dispatch(propertyFilter());
+  }, []);
 
   useEffect(() => {
     if (activeFilterApplied.search) {
@@ -48,8 +56,8 @@ const HomeProvider = ({ children }) => {
       dispatch(getBrowseByCategory(urlSearchValues?.id, () => {}));
     }
     if (urlSearchValues?.item) {
-      let val=stringToArrayOfObjects(urlSearchValues?.item)
-      dispatch(selectedSearchValue(val))
+      let val = stringToArrayOfObjects(urlSearchValues?.item);
+      dispatch(selectedSearchValue(val));
       setActiveFilterApplied({
         ...activeFilterApplied,
         search: urlSearchValues?.item,
@@ -72,7 +80,7 @@ const HomeProvider = ({ children }) => {
   };
 
   const handleSelectedPropertyCard = (id) => {
-      navigate(`/single-property-details/${id}`);
+    navigate(`/single-property-details/${id}`);
   };
   const openCloseModal = () => {
     dispatch(handleFilterModal());
@@ -98,6 +106,18 @@ const HomeProvider = ({ children }) => {
     );
   };
 
+  const viewFilterResult = () => {
+    setFinalResultFilter(currentFilterItem)
+    navigate(generateApiUrl(activeFilterApplied, "find-property"));
+    dispatch(handleFilterModal());
+    dispatch(searchAgentProperty(activeFilterApplied));
+  };
+
+  const clearAppliedFilter=()=>{
+    setCurrentFilterItem([])
+    setFinalResultFilter([])
+  }
+
   return (
     <>
       <HomePageContext.Provider
@@ -110,7 +130,17 @@ const HomeProvider = ({ children }) => {
           handlePropertyOptions,
           likeDislikeProperties,
           browseByCategory,
-          propertyFilterList
+          propertyFilterList,
+          viewFilterResult,
+          activeFilterApplied,
+          setActiveFilterApplied,
+          setCurrentFilterItem,
+          currentFilterItem,
+          clearAppliedFilter,
+          finalResultFilter,
+          setSelectedCheckBox,
+          selectedCheckBox
+
         }}
       >
         {children}

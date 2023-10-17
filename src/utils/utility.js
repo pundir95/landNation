@@ -12,7 +12,10 @@ export const generateApiUrl = (filters, endpointName) => {
   };
 
   export const activityFilter={
-    search:''
+    search:'',
+    region:'',
+    country:'',
+    price:''
   }
 
   export const getValuesFromUrlLocation=(value)=>{
