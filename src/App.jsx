@@ -7,10 +7,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './assets/style.css'
-
+import loaderImg from './assets/images/loading-img.gif'
 function App() {
   return (
     <>
+      <div className="loading-screen">
+        <div>
+          <img src={loaderImg} />
+        </div>
+      </div>
       <ToastContainer
         position="top-right"
         autoClose={2000}
