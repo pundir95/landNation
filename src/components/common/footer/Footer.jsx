@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import planeIcon from '../../../assets/images/plane-icon.svg';
-import '../../../assets/style.css';
+// import '../../../assets/style.css';
 import logoImg from '../../../assets/images/LandNation.png';
 import youTubeIcon from '../../../assets/images/youtube.svg';
 import fbIcon from '../../../assets/images/facebook.svg';
