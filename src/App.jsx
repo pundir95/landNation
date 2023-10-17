@@ -8,14 +8,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import './assets/style.css'
 import loaderImg from './assets/images/loading-img.gif'
+import noData from './components/common/NoDataFound/NoDataFound'
 function App() {
   return (
     <>
-      <div className="loading-screen">
+      <div className="loading-screen d-none">
         <div>
           <img src={loaderImg} />
         </div>
       </div>
+      <noData/>
       <ToastContainer
         position="top-right"
         autoClose={2000}

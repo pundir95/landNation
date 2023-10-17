@@ -1233,6 +1233,23 @@ padding: 28px 43px;
 {
     width: 130px;
 }
+/* End */
+.no-data
+{
+    background: #ffe0e0;
+    padding: 10px 20px;
+    color: #f00;
+    border-left: 4px solid #f00;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.no-data img
+{
+    width: 40px;
+}
 
 
 /* Media Query */
