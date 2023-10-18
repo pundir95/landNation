@@ -1,12 +1,25 @@
-import React, { useEffect } from "react";
+import React, { useEffect , useState } from "react";
 import greenImage from "../../../assets/images/green-bg-picture.jpg";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { getSinglePropertyDetails } from "../../../store/slices/homeDataSlice";
 import { BASE_URL } from "../../../utils/utility";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import GalleryPopup from "../Modals/galleryModal";
 const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    setShowModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
   const dispatch = useDispatch();
   const location = useLocation();
   let id = location.pathname.split("/")[2];
@@ -15,30 +28,50 @@ const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
       dispatch(getSinglePropertyDetails(id));
     }
   }, []);
-
+  var featureSlider = {
+    dots: false,
+    arrows: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 2,
+    slidesToScroll: 1,
+  };
   return (
     <>
       {loading ? (
         <p>Loading..........</p>
       ) : (
         <div className="feature-card p-3">
-          <Row>
-            <Col lg={6}>
+          <div className="feature-slider position-relative">
+            <Button variant="transparent" className="view-btn" onClick={handleShowModal}>
+            View All Pictures & Map
+            </Button>
+            <Slider {...featureSlider}>
               <div>
                 <img
                   src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[0]?.media}
                   className="picture-card-imd"
                 />
               </div>
-            </Col>
-            <Col lg={6}>
               <div>
               <img
                   src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[1]?.media}
                 className="picture-card-imd" />
               </div>
-            </Col>
-          </Row>
+              <div>
+                <img
+                  src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[0]?.media}
+                  className="picture-card-imd"
+                />
+              </div>
+              <div>
+                <img
+                  src={singlePropertyDetailsData?.media?.length>0 && BASE_URL+singlePropertyDetailsData?.media[0]?.media}
+                  className="picture-card-imd"
+                />
+              </div>
+            </Slider>
+          </div>
           <div className="d-flex justify-content-between my-3 align-items-center">
             <button className="available-btn" type="button">
               Available
@@ -79,6 +112,7 @@ const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
           </div>
         </div>
       )}
+      <GalleryPopup show={showModal} handleClose={handleCloseModal} />
     </>
   );
 };
