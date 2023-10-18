@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef , useState,useEffect } from "react";
 import { Modal , Button, Nav, Tab } from "react-bootstrap";
 import greenImage from "../../../assets/images/green-bg-picture.jpg";
 import Slider from "react-slick";
@@ -7,15 +7,32 @@ import "slick-carousel/slick/slick-theme.css";
 import closeIcon from '../../../assets/images/close-circle.svg'
 import favIcon from '../../../assets/images/fav-icon.svg'
 import shareIcon from '../../../assets/images/share-icon.svg'
+import { BsChevronLeft } from 'react-icons/bs';
+import { BsChevronRight } from 'react-icons/bs';
 function GalleryPopup({ show, handleClose }) {
+    const sliderRef = useRef(null);
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [totalSlides, setTotalSlides] = useState(0);
     var featureSlider = {
         dots: false,
         arrows: true,
-        infinite: true,
+        infinite: false,
         speed: 500,
         slidesToShow: 1,
         slidesToScroll: 1,
+        prevArrow: <BsChevronLeft className="prev-icon"/>,
+        nextArrow: <BsChevronRight className="next-icon"/>,
+        afterChange: (current) => {
+            setCurrentSlide(current);
+        },
       };
+
+      useEffect(() => {
+        if (sliderRef.current) {
+          setTotalSlides(sliderRef.current.props.children.length);
+        }
+      }, []);
+
   return (
     <>
         <Modal show={show} onHide={handleClose} size="lg" className="gallery-popup" centered>
@@ -40,8 +57,7 @@ function GalleryPopup({ show, handleClose }) {
                         <Tab.Pane eventKey="gallery">
                             <div className="gallery-contain mt-3">
                                 <div className="feature-slider position-relative">
-                                    <p className="slide-pages"><span className="current-slide">6</span>/<span className="total-slides">14</span></p>
-                                    <Slider {...featureSlider}>
+                                    <Slider ref={sliderRef} {...featureSlider}>
                                     <div>
                                         <img
                                         src={greenImage}
@@ -66,6 +82,7 @@ function GalleryPopup({ show, handleClose }) {
                                         />
                                     </div>
                                     </Slider>
+                                    <p className="slide-pages"><span className="current-slide">{currentSlide + 1}</span>/<span className="total-slides">{totalSlides}</span></p>
                                 </div>
                             </div>
                         </Tab.Pane>

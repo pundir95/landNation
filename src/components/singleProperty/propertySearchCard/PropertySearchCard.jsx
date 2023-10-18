@@ -9,6 +9,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import GalleryPopup from "../Modals/galleryModal";
+import { BsChevronLeft } from 'react-icons/bs';
+import { BsChevronRight } from 'react-icons/bs';
 const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
   const [showModal, setShowModal] = useState(false);
 
@@ -31,10 +33,12 @@ const PropertySearchCard = ({ singlePropertyDetailsData, loading }) => {
   var featureSlider = {
     dots: false,
     arrows: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 2,
     slidesToScroll: 1,
+    prevArrow: <BsChevronLeft className="prev-icon"/>,
+    nextArrow: <BsChevronRight className="next-icon"/>
   };
   return (
     <>
