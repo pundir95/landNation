@@ -60,7 +60,7 @@ export const homeDataSlice = createSlice({
         },
 
         setPropertyListSortFilter:(state,action)=>{
-         state.loading=true
+         state.loading=false
          state.propertyList=action.payload
         },
 
@@ -68,6 +68,7 @@ export const homeDataSlice = createSlice({
             state.propertyList=action.payload
         },
         setBrowseByCategory:(state,action)=>{
+            state.loading=false
             state.propertyList=action.payload
         },
 
@@ -78,7 +79,7 @@ export const homeDataSlice = createSlice({
 
 })
 
-export const { setPageTitle, setSearchValue, setFilterModal, setPropertyFeatureList,setPropertyFilterList,setBrowseByCategory, setStateCityOrCountryList, setSinglePropertyDetailsLoading,selectSearchProperty, setSinglePropertyDetails,setPropertyListSortFilter,setLikeDislikeProperties } = homeDataSlice.actions
+export const {propertyDataloader, setPageTitle, setSearchValue, setFilterModal, setPropertyFeatureList,setPropertyFilterList,setBrowseByCategory, setStateCityOrCountryList, setSinglePropertyDetailsLoading,selectSearchProperty, setSinglePropertyDetails,setPropertyListSortFilter,setLikeDislikeProperties } = homeDataSlice.actions
 
 export default homeDataSlice.reducer
 
@@ -96,6 +97,7 @@ export function getProperty(payload) {
 export function getFeatureProperty(payload) {
     return async (dispatch) => {
         try {
+            dispatch(propertyDataloader())
             let result = await instance.get('/realestate/agent-property/featured');
             dispatch(setPropertyFeatureList(result.data))
         } catch (error) {
@@ -145,7 +147,7 @@ export function getPropertyListSortFilter(payload){
     return async (dispatch)=>{
         dispatch(setSinglePropertyDetailsLoading())
         let result=await instance.get(`/realestate/property/?ordering=${payload}`)
-        dispatch(setPropertyListSortFilter(result.data))
+        dispatch(setPropertyListSortFilter(result.data.results))
     }
 }
 
@@ -162,7 +164,7 @@ export function _likeDislikeProperties(payload){
 
 export function getBrowseByCategory(payload,callBack){
     return async (dispatch)=>{
-        // dispatch(setSinglePropertyDetailsLoading())
+        dispatch(setSinglePropertyDetailsLoading())
         let result=await instance.get(`/realestate/property/?property_type=${payload}`)
         console.log(result,"browser")
         dispatch(setBrowseByCategory(result.data.results))

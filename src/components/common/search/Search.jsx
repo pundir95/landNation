@@ -20,7 +20,6 @@ const Search = () => {
   const [selectedOptions, setSelectedOptions] = useState([]);
   const [menuIsOpen, setMenuIsOpen] = React.useState(false);
 
-console.log(searchValue,"searchValue")
 
   const handleSearch=(value)=>{
     // if (searchValue.some((value) => value.value === value)) {

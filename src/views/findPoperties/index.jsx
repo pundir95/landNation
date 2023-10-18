@@ -11,19 +11,21 @@ import { useSelector } from "react-redux";
 import PaginationComponent from "../../components/common/pagination/PaginationComponent";
 import Filter from "../../components/common/filter/Filter";
 import SearchWithFilter from "../../components/singleProperty/searchWithFilter/SearchWithFilter";
+import Loader from "../../components/common/commonLoader/Loader";
 const FindProperties = () => {
-  const { openCloseModal } = homePageData();
-  const { propertyList,openFilterModal} = useSelector((state) => state.homeData);
+  const { openCloseModal,propertyFilterList } = homePageData();
+  const { propertyList,openFilterModal,loading} = useSelector((state) => state.homeData);
   return (
     <>
       <HomeProvider>
         {openFilterModal ? <Filter /> : ""}
+        {loading?<Loader/>:""}
         <section className="filter-section mt-5 pt-90 search-results">
           <Container>
               <SearchWithFilter/>
             <div className="d-flex align-items-center justify-content-between mb-4">
               <p className="text-body">
-                Arkansas Land for Sale - 14,342 Listings
+                {/* Arkansas Land for Sale - 14,342 Listings */}
               </p>
               <SortFilter />
             </div>
