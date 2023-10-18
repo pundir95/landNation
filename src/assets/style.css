@@ -374,7 +374,6 @@ font-weight: 600 !important;
 {
     border: 1px solid #c7c7c7;
     border-radius: 28px;
-    cursor: pointer;
 }
 .feature-img
 {
@@ -660,7 +659,7 @@ font-weight: 600 !important;
     content: "";
     position: absolute;
     width: 100%;
-    z-index: 9999;
+    z-index: 9;
     left: 0;
     right: 0;
     top: 0;
@@ -1267,7 +1266,173 @@ padding: 28px 43px;
 {
     width: 40px;
 }
-
+/* slider css */
+.feature-slider .slick-track
+{
+    display: flex;
+    gap: 14px;
+}
+.feature-slider .slick-arrow
+{
+    z-index: 2;
+}
+.feature-slider .slick-arrow:before
+{
+    opacity: 1;
+    font-size: 30px;
+    color: #000;
+}
+.feature-slider .slick-arrow.slick-prev
+{
+    left: 28px;
+    border-radius: 50%;
+}
+.feature-slider .slick-arrow.slick-next
+{
+    right: 25px;
+}
+.feature-slider img
+{
+    height: 323px;
+    border-radius: 7px;
+    object-fit: cover;
+}
+.view-btn
+{
+    position: absolute;
+    bottom: 13px;
+    left: 15px;
+    padding: 2px 16px;
+    font-size: 13px;
+    border-radius: 50px;
+    color: #fff;
+    background: #000;
+    z-index: 2;
+    line-height: 29px;
+    transition: .4s ease;
+}
+.view-btn:hover
+{
+    background-color: #fff;
+    color: #000;
+}
+.feature-slider .slick-arrow
+{
+    width: 35px;
+    height: 35px;
+    padding: 7px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #C7C7C7;
+    transition: .4s ease;
+}
+.feature-slider .slick-arrow:hover
+{
+    background-color: #fff;
+}
+.feature-slider .slick-arrow.slick-disabled
+{
+    background-color: #000;
+    border: 1px solid #1D1D1D;
+}
+.feature-slider .slick-arrow.slick-disabled path
+{
+    fill: #fff;
+}
+.slick-arrow path
+{
+    width: 10px;
+    height: 10px;
+    fill: #000;
+}
+/* slider end */
+/* Gallery Popup */
+.gallery-popup
+{
+    z-index: 999999999;
+}
+.close-icon
+{
+    width: 43px;
+}
+.popup-pills
+{
+    gap: 10px;
+    flex-wrap: nowrap;
+}
+.popup-pills a
+{
+    padding: 12px;
+}
+.gallery-popup .popup-pills a
+{
+    border: 1px solid #b4b4b4;
+    border-radius: 11px;
+    color: #000;   
+}
+.gallery-popup .popup-pills a.active
+{
+    color: #000;
+    background-color: #FFFAE9;
+}
+.gallery-contain
+{
+    padding: 88px 0;
+    background: #000;
+    border-radius: 14px;
+}
+.gallery-contain .feature-slider .slick-track
+{
+    display: flex;
+    gap: 0px;
+}
+.gallery-contain .feature-slider img
+{
+    height: 400px;
+}
+.rounded-14
+{
+    border-radius: 14px;
+}
+.slide-pages
+{
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 24px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, .8);
+    padding: 5px 12px;
+    font-size: 17px;
+    font-weight: 400;
+    color: #000;
+    left: 13px;
+    z-index: 2;
+}
+.popup-btn
+{
+    width: 37px;
+    height: 37px;
+    border: 1px solid #b4b4b4;
+    border-radius: 5px;
+    background: transparent;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup-btn:hover
+{
+    background-color: #FFFAE9;
+    border: 1px solid #b4b4b4;
+}
+.cursor-pointer
+{
+    cursor: pointer !important;
+}
+.popup-btn img
+{
+    width: 20px;
+}
+/* Gallery Popup End */
 
 /* Media Query */
 @media only screen and (max-width: 1400px)
@@ -1428,7 +1593,13 @@ padding: 28px 43px;
         width: 43px;
     }
 }
-
+@media only screen and (min-width: 576px)
+{
+    .gallery-popup .modal-dialog
+    {
+        max-width: 768px;
+    }
+}
 @media only screen and (max-width: 575px) {
     .section-head {
         font-size: 20px;
