@@ -13,6 +13,8 @@ function GalleryPopup({ show, handleClose }) {
     const sliderRef = useRef(null);
     const [currentSlide, setCurrentSlide] = useState(0);
     const [totalSlides, setTotalSlides] = useState(0);
+    const [imageSources, setimageSources] = useState([greenImage,greenImage,greenImage,greenImage]);
+
     var featureSlider = {
         dots: false,
         arrows: true,
@@ -28,16 +30,21 @@ function GalleryPopup({ show, handleClose }) {
       };
 
       useEffect(() => {
-        if (sliderRef.current) {
-          setTotalSlides(sliderRef.current.props.children.length);
-        }
-      }, []);
+        setTotalSlides(imageSources.length);
+      }, [imageSources]);
+
+      const handleCloseModal = () => {
+        setCurrentSlide(0);
+        handleClose();
+      };
+
 
   return (
     <>
-        <Modal show={show} onHide={handleClose} size="lg" className="gallery-popup" centered>
+        <Modal show={show} onHide={handleCloseModal} size="lg" className="gallery-popup" centered backdrop="static"
+        keyboard={false}>
             <Modal.Header className="justify-content-end border-0">
-                <img src={closeIcon} className="close-icon cursor-pointer" onClick={handleClose}/>
+                <img src={closeIcon} className="close-icon cursor-pointer" onClick={handleCloseModal}/>
             </Modal.Header>
             <Modal.Body>
                 <Tab.Container defaultActiveKey="gallery">
@@ -57,7 +64,7 @@ function GalleryPopup({ show, handleClose }) {
                         <Tab.Pane eventKey="gallery">
                             <div className="gallery-contain mt-3">
                                 <div className="feature-slider position-relative">
-                                    <Slider ref={sliderRef} {...featureSlider}>
+                                    {/* <Slider ref={sliderRef} {...featureSlider}>
                                     <div>
                                         <img
                                         src={greenImage}
@@ -81,6 +88,14 @@ function GalleryPopup({ show, handleClose }) {
                                         className="picture-card-imd"
                                         />
                                     </div>
+                                    </Slider> */}
+
+                                    <Slider ref={sliderRef} {...featureSlider}>
+                                        {imageSources.map((src, index) => (
+                                            <div key={index}>
+                                            <img src={src} className="picture-card-imd" />
+                                            </div>
+                                        ))}
                                     </Slider>
                                     <p className="slide-pages"><span className="current-slide">{currentSlide + 1}</span>/<span className="total-slides">{totalSlides}</span></p>
                                 </div>
