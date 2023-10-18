@@ -6,7 +6,7 @@ import { homePageData } from "../../context/HomeProvider";
 import SortFilter from "../../components/common/sortFilter/SortFilter";
 
 const FindAgent = () => {
-  const { searchValue } = homePageData();
+  const { searchValue,propertyFilterList } = homePageData();
   return (
     <>
       {searchValue.length > 0 ? (
@@ -16,7 +16,7 @@ const FindAgent = () => {
             <Container>
               <div className="d-flex align-items-center justify-content-between mb-4">
                 <p className="text-body">
-                  Arkansas Land for Sale - 14,342 Listings
+                  {/* {`Arkansas Land for Sale - ${propertyFilterList.length} Listings`} */}
                 </p>
                 <SortFilter />
               </div>

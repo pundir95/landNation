@@ -20,7 +20,19 @@ const Filter = () => {
     setSelectedCheckBox,
     removedCurrentFilter,
     selectedCheckBox1,
-    setSelectedCheckBox1
+    setSelectedCheckBox1,
+    selectedCheckBox2,
+    setSelectedCheckBox2,
+    selectedCheckBox3,
+    setSelectedCheckBox3,
+    selectedCheckBox4,
+    setSelectedCheckBox4,
+    selectedCheckBox5,
+    setSelectedCheckBox5,
+    selectedCheckBox6,
+    setSelectedCheckBox6,
+    selectedCheckBox7,
+    setSelectedCheckBox7,
   } = homePageData();
   const { searchValue } = useSelector((state) => state.homeData);
 
@@ -37,30 +49,34 @@ const Filter = () => {
         ...activeFilterApplied,
         region: indexValue,
       });
-      let data={
+      let data = {
         itemValue,
         indexValue,
-        currentFilterSelect
-      }
-      setCurrentFilterItem([...currentFilterItem,data])
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
       if (selectedCheckBox.includes(indexValue)) {
-        setSelectedCheckBox(selectedCheckBox.filter((item) => item !== indexValue));
+        setSelectedCheckBox(
+          selectedCheckBox.filter((item) => item !== indexValue)
+        );
       } else {
         setSelectedCheckBox([...selectedCheckBox, indexValue]);
       }
     } else if (currentFilterSelect == "country") {
       setActiveFilterApplied({
         ...activeFilterApplied,
-        country: [1,3,4].join(','),
+        country: [1, 3, 4].join(","),
       });
-      let data={
+      let data = {
         itemValue,
         indexValue,
-        currentFilterSelect
-      }
-      setCurrentFilterItem([...currentFilterItem,data])
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
       if (selectedCheckBox1.includes(indexValue)) {
-        setSelectedCheckBox1(selectedCheckBox1.filter((item) => item !== indexValue));
+        setSelectedCheckBox1(
+          selectedCheckBox1.filter((item) => item !== indexValue)
+        );
       } else {
         setSelectedCheckBox1([...selectedCheckBox1, indexValue]);
       }
@@ -69,24 +85,130 @@ const Filter = () => {
         ...activeFilterApplied,
         price: indexValue,
       });
-      setCurrentFilterItem([...currentFilterItem,itemValue])
-    }
-    else if (currentFilterSelect == "acres") {
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox2.includes(indexValue)) {
+        setSelectedCheckBox2(
+          selectedCheckBox2.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox2([...selectedCheckBox2, indexValue]);
+      }
+    } else if (currentFilterSelect == "acres") {
       setActiveFilterApplied({
         ...activeFilterApplied,
         acres: indexValue,
       });
-      setCurrentFilterItem([...currentFilterItem,itemValue])
-    }
-    else if (currentFilterSelect == "property") {
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox3.includes(indexValue)) {
+        setSelectedCheckBox3(
+          selectedCheckBox3.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox3([...selectedCheckBox3, indexValue]);
+      }
+    } else if (currentFilterSelect == "property") {
       setActiveFilterApplied({
         ...activeFilterApplied,
         property: indexValue,
       });
-      setCurrentFilterItem([...currentFilterItem,itemValue])
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox4.includes(indexValue)) {
+        setSelectedCheckBox4(
+          selectedCheckBox4.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox4([...selectedCheckBox4, indexValue]);
+      }
+    } else if (currentFilterSelect == "bedrooms") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        bedrooms: indexValue,
+      });
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox5.includes(indexValue)) {
+        setSelectedCheckBox5(
+          selectedCheckBox5.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox5([...selectedCheckBox5, indexValue]);
+      }
+    } else if (currentFilterSelect == "bathrooms") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        bathrooms: indexValue,
+      });
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox6.includes(indexValue)) {
+        setSelectedCheckBox6(
+          selectedCheckBox6.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox6([...selectedCheckBox6, indexValue]);
+      }
+    } else if (currentFilterSelect == "squareFeet") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        bathrooms: indexValue,
+      });
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox7.includes(indexValue)) {
+        setSelectedCheckBox7(
+          selectedCheckBox7.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox7([...selectedCheckBox7, indexValue]);
+      }
+    } else if (currentFilterSelect == "availability") {
+      setActiveFilterApplied({
+        ...activeFilterApplied,
+        bathrooms: indexValue,
+      });
+      let data = {
+        itemValue,
+        indexValue,
+        currentFilterSelect,
+      };
+      setCurrentFilterItem([...currentFilterItem, data]);
+      if (selectedCheckBox7.includes(indexValue)) {
+        setSelectedCheckBox6(
+          selectedCheckBox7.filter((item) => item !== indexValue)
+        );
+      } else {
+        setSelectedCheckBox6([...selectedCheckBox7, indexValue]);
+      }
     }
   };
-console.log(finalResultFilter,"finalResultFilter")
+  console.log(finalResultFilter, "finalResultFilter");
   return (
     <>
       <section className="filter-sidebar">
@@ -105,7 +227,10 @@ console.log(finalResultFilter,"finalResultFilter")
                   <>
                     <span className="active-filter">
                       {item.itemValue.value}
-                      <button className="close-filter" onClick={()=>removedCurrentFilter(item)}>
+                      <button
+                        className="close-filter"
+                        onClick={() => removedCurrentFilter(item)}
+                      >
                         <img src={closeIcon} />
                       </button>
                     </span>
@@ -125,16 +250,11 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        checked={selectedCheckBox.includes(index+1)}
+                        checked={selectedCheckBox.includes(index + 1)}
                         value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(
-                            e,
-                            index + 1,
-                            item,
-                            "region"
-                          )
+                          handleFilterChange(e, index + 1, item, "region")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
@@ -167,7 +287,7 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        // checked={selectedCheckBox.includes(index+1)}
+                        checked={selectedCheckBox2.includes(index + 1)}
                         value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
@@ -175,9 +295,7 @@ console.log(finalResultFilter,"finalResultFilter")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        ${item.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">${item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -211,16 +329,15 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value={item.acre_range}
+                        value={item.value}
                         id="flexCheckDefault"
+                        checked={selectedCheckBox3.includes(index + 1)}
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1,item.acre_range, "acres")
+                          handleFilterChange(e, index + 1, item, "acres")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        ${item.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">${item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -234,7 +351,7 @@ console.log(finalResultFilter,"finalResultFilter")
                 <input
                   type="text"
                   className="form-control common-outlined-field shadow-none"
-                  placeholder="Min" 
+                  placeholder="Min"
                 />
                 <input
                   type="text"
@@ -256,16 +373,15 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
+                        checked={selectedCheckBox4.includes(index + 1)}
                         value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1,item.value, "property")
+                          handleFilterChange(e, index + 1, item, "property")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        {item?.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">{item?.value}</p>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>
                   </>
@@ -284,16 +400,15 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
+                        checked={selectedCheckBox5.includes(index + 1)}
                         value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1,item?.value, "bedrooms")
+                          handleFilterChange(e, index + 1, item, "bedrooms")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        ${item.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">${item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -320,20 +435,22 @@ console.log(finalResultFilter,"finalResultFilter")
           <div className="feature-card rounded-12 p-1">
             <div className="filter-subhead mb-4">BathRoom</div>
             <div className="filter-container px-3 pb-3">
-              {propertyFilterList?.bedrooms?.map((item, index) => {
+              {propertyFilterList?.bathrooms?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
                       <input
                         class="form-check-input"
                         type="checkbox"
-                        value=""
+                        checked={selectedCheckBox5.includes(index + 1)}
+                        value={item.value}
                         id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1, item, "bathrooms")
+                        }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        ${item.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">${item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -367,16 +484,15 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
+                        checked={selectedCheckBox6.includes(index + 1)}
                         value={item.value}
                         id="flexCheckDefault"
                         onChange={(e) =>
-                          handleFilterChange(e, index + 1,item.value, "property")
+                          handleFilterChange(e, index + 1, item, "squareFeet")
                         }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        ${item.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">${item.value}</p>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -410,13 +526,15 @@ console.log(finalResultFilter,"finalResultFilter")
                       <input
                         class="form-check-input"
                         type="checkbox"
+                        checked={selectedCheckBox7.includes(index + 1)}
                         value=""
                         id="flexCheckDefault"
+                        onChange={(e) =>
+                          handleFilterChange(e, index + 1, item, "availability")
+                        }
                       />
                       <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">
-                        {item?.value}
-                      </p>
+                      <p className="text-body fw-normal mb-0">{item?.value}</p>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>
                   </>
@@ -432,7 +550,10 @@ console.log(finalResultFilter,"finalResultFilter")
             </button>
           </div>
           <div className="d-flex">
-            <button className="form-control common-outlined-field shadow-none" onClick={clearAppliedFilter}>
+            <button
+              className="form-control common-outlined-field shadow-none"
+              onClick={clearAppliedFilter}
+            >
               Clear
             </button>
             <button className="form-common-btn" onClick={viewFilterResult}>
