@@ -247,18 +247,19 @@ const Filter = () => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "region")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">{item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox.includes(index + 1)}
+                          value={item.value}
+                          id={item.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "region")
+                          }
+                        />
+                        <label class="form-check-label" for={item.value}>{item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -277,25 +278,26 @@ const Filter = () => {
         See More
       </button> */}
           </div>
-          <div className="feature-card rounded-12 p-1">
+          <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Price</div>
             <div className="filter-container px-3 pb-3">
               {propertyFilterList?.price?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox2.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "price")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">${item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox2.includes(index + 1)}
+                          value={item.value}
+                          id={item.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "price")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item.value}>${item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -319,25 +321,26 @@ const Filter = () => {
             </div>
           </div>
 
-          <div className="feature-card rounded-12 p-1">
+          <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Parcel Size</div>
             <div className="filter-container px-3 pb-3">
               {propertyFilterList?.acres?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        value={item.value}
-                        id="flexCheckDefault"
-                        checked={selectedCheckBox3.includes(index + 1)}
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "acres")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">${item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          value={item.value}
+                          id={item.value}
+                          checked={selectedCheckBox3.includes(index + 1)}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "acres")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item.value}>${item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -370,18 +373,19 @@ const Filter = () => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox4.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "property")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">{item?.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox4.includes(index + 1)}
+                          value={item.value}
+                          id={item?.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "property")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item?.value}>{item?.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>
                   </>
@@ -390,25 +394,26 @@ const Filter = () => {
             </div>
           </div>
 
-          <div className="feature-card rounded-12 p-1">
+          <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Bedrooms</div>
             <div className="filter-container px-3 pb-3">
               {propertyFilterList?.bedrooms?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox5.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "bedrooms")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">${item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox5.includes(index + 1)}
+                          value={item.value}
+                          id={item.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "bedrooms")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item.value}>${item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -432,25 +437,26 @@ const Filter = () => {
             </div>
           </div>
 
-          <div className="feature-card rounded-12 p-1">
+          <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">BathRoom</div>
             <div className="filter-container px-3 pb-3">
               {propertyFilterList?.bathrooms?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox5.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "bathrooms")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">${item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox5.includes(index + 1)}
+                          value={item.value}
+                          id={item.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "bathrooms")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item.value}>${item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -474,25 +480,26 @@ const Filter = () => {
             </div>
           </div>
 
-          <div className="feature-card rounded-12 p-1">
+          <div className="feature-card rounded-12 p-1 mb-3">
             <div className="filter-subhead mb-4">Square Feet</div>
             <div className="filter-container px-3 pb-3">
               {propertyFilterList?.square_feet?.map((item, index) => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox6.includes(index + 1)}
-                        value={item.value}
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "squareFeet")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">${item.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1"
+                          type="checkbox"
+                          checked={selectedCheckBox6.includes(index + 1)}
+                          value={item.value}
+                          id={item.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "squareFeet")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item.value}>${item.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item.count}</p>
                     </div>
                   </>
@@ -523,18 +530,19 @@ const Filter = () => {
                 return (
                   <>
                     <div className="mb-3 d-flex align-items-center justify-content-between">
-                      <input
-                        class="form-check-input"
-                        type="checkbox"
-                        checked={selectedCheckBox7.includes(index + 1)}
-                        value=""
-                        id="flexCheckDefault"
-                        onChange={(e) =>
-                          handleFilterChange(e, index + 1, item, "availability")
-                        }
-                      />
-                      <label class="form-check-label" for="flexCheckDefault" />
-                      <p className="text-body fw-normal mb-0">{item?.value}</p>
+                      <div>
+                        <input
+                          class="form-check-input me-1 "
+                          type="checkbox"
+                          checked={selectedCheckBox7.includes(index + 1)}
+                          value=""
+                          id={item?.value}
+                          onChange={(e) =>
+                            handleFilterChange(e, index + 1, item, "availability")
+                          }
+                        />
+                        <label class="form-check-label text-body fw-normal mb-0" for={item?.value}>${item?.value}</label>
+                      </div>
                       <p className="text-body fw-normal mb-0">{item?.count}</p>
                     </div>
                   </>
@@ -542,25 +550,25 @@ const Filter = () => {
               })}
             </div>
           </div>
+          <div className="d-flex justify-content-between">
+            <div>
+              <button className="form-control common-outlined-field shadow-none px-4">
+                Save Search
+              </button>
+            </div>
+            <div className="d-flex">
+              <button
+                className="form-control common-outlined-field shadow-none me-3"
+                onClick={clearAppliedFilter}
+              >
+                Clear
+              </button>
+              <button className="form-common-btn" onClick={viewFilterResult}>
+                View Result
+              </button>
+            </div>
+          </div>
         </Container>
-        <div className="d-flex justify-content-between">
-          <div>
-            <button className="form-control common-outlined-field shadow-none">
-              Save Search
-            </button>
-          </div>
-          <div className="d-flex">
-            <button
-              className="form-control common-outlined-field shadow-none"
-              onClick={clearAppliedFilter}
-            >
-              Clear
-            </button>
-            <button className="form-common-btn" onClick={viewFilterResult}>
-              View Result
-            </button>
-          </div>
-        </div>
       </section>
     </>
   );

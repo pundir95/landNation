@@ -9,16 +9,17 @@ const FilterCard = ({ filterList, filterTitle,handleFilterChange,selectedCheckBo
           return (
             <>
               <div className="mb-3 d-flex align-items-center justify-content-between">
-                <input
-                  class="form-check-input"
-                  type="checkbox"
-                  checked={selectedCheckBox1.includes(index+1)}
-                  value={item?.value}
-                  id="flexCheckDefault"
-                  onChange={(e)=>handleFilterChange(e,index+1,item,"country")}
-                />
-                <label class="form-check-label" for="flexCheckDefault" />
-                <p className="text-body fw-normal mb-0">{item?.value}</p>
+                <div>
+                  <input
+                    class="form-check-input me-1"
+                    type="checkbox"
+                    checked={selectedCheckBox1.includes(index+1)}
+                    value={item?.value}
+                    id="flexCheckDefault"
+                    onChange={(e)=>handleFilterChange(e,index+1,item,"country")}
+                  />
+                  <label class="form-check-label text-body fw-normal mb-0" for="flexCheckDefault">{item?.value}</label>
+                </div>
                 <p className="text-body fw-normal mb-0">{item?.count}</p>
               </div>
             </>

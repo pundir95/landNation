@@ -1018,7 +1018,7 @@ padding: 28px 43px;
 {
     gap: 10px;
 }
-.feature-card .common-outlined-field
+.common-outlined-field
 {
     min-width: 100px;
     display: inline-block;
@@ -1300,8 +1300,8 @@ padding: 28px 43px;
 .view-btn
 {
     position: absolute;
-    bottom: 13px;
-    left: 15px;
+    bottom: 18px;
+    left: 30px;
     padding: 2px 16px;
     font-size: 13px;
     border-radius: 50px;
@@ -1486,7 +1486,7 @@ padding: 28px 43px;
     .search-by-map
     {
         font-size: 13px;
-        padding: 9px 22px;
+        padding: 9px 10px;
     }
     .search-field
     {
@@ -1591,6 +1591,15 @@ padding: 28px 43px;
     .close-btn-icon img
     {
         width: 43px;
+    }
+    .search-results .search-card
+    {
+        padding: 5px 22px;
+    }
+    .search-btn
+    {
+        width: 50px;
+        height: 50px;
     }
 }
 @media only screen and (min-width: 576px)
