@@ -51,7 +51,7 @@ const Filter = () => {
     } else if (currentFilterSelect == "country") {
       setActiveFilterApplied({
         ...activeFilterApplied,
-        country: indexValue,
+        country: [1,3,4].join(','),
       });
       let data={
         itemValue,
@@ -234,7 +234,7 @@ console.log(finalResultFilter,"finalResultFilter")
                 <input
                   type="text"
                   className="form-control common-outlined-field shadow-none"
-                  placeholder="Min"
+                  placeholder="Min" 
                 />
                 <input
                   type="text"

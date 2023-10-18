@@ -66,3 +66,16 @@ export function agentLogin(payload) {
         }
     };
 }
+
+export function verifyOtp(payload) {
+    return async (dispatch) => {
+        dispatch(authDataLoading())
+        try {
+            let result = await instance.post('enterotp/', { ...payload })
+            console.log(result)
+        } catch (error) {
+            const message = error.message || "Something went wrong";
+            dispatch(authDataError())
+        }
+    };
+}
